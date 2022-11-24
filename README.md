@@ -35,4 +35,4 @@ https://miro.com/app/board/uXjVPB0RPGI=/?share_link_id=364966502196
 
 
 ## ER図
-![](https://i.imgur.com/roxKGTq.png)
+![](https://i.imgur.com/Vb2Hwr3.png)
