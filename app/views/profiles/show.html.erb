@@ -1,6 +1,7 @@
 <h1>マイページ</h1>
 
-<%= @user.icon %>
+
+<%= image_tag @user.icon.url, size: '100x100' %>
 <%= @user.name %>
 <%# <%= link_to 'アカウント設定', edit_user_path(current_user) %> %>
 
