@@ -1,11 +1,13 @@
 class ProfilesController < ApplicationController
 
   def edit
-    @profile = Profile.find(params[:id])
+    @user = User.find(params[:id])
+    @profile = @user.profile
   end
 
   def update
-    @profile = Profile.find(params[:id])
+    @user = User.find(params[:id])
+    @profile = @user.profile
     if @profile.update(params_profile)
       redirect_to profile_path(current_user), notice: 'プロフィールを編集しました'
     else
@@ -14,7 +16,8 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @profile = Profile.find(params[:id])
+    @user = User.find(params[:id])
+    @profile = @user.profile
   end
 
   private 
@@ -22,6 +25,4 @@ class ProfilesController < ApplicationController
   def params_profile
     params.require(:profile).permit(:prefecture, :drone_name, :main_crop, :introduction_year, :self_introduction)
   end
-
-
 end
