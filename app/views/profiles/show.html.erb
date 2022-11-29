@@ -1,0 +1,12 @@
+<h1>マイページ</h1>
+
+<%= @user.icon %>
+<%= @user.name %>
+<%# <%= link_to 'アカウント設定', edit_user_path(current_user) %> %>
+
+
+<%= "-----" if @profile.prefecture.blank? %>
+<%= @profile.prefecture %>
+
+
+

@@ -8,6 +8,13 @@
     <%= f.text_field :name, autofocus: true, placeholder: "ユーザー名（変更可能）" %>
   </div>
 
+  <%= f.fields_for :profile do |f| %>
+    <div class="field">
+      <%= f.label :prefecture %><br />
+      <%= f.text_field :prefecture %>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
