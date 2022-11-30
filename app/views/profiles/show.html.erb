@@ -24,7 +24,7 @@
 
 <label>ドローン導入年度</label>
 <%= "-----" if @profile.introduce_year.blank? %>
-<%= @profile.introduce_year %>
+<%= @profile.introduce_year.year %>
 
 <br>
 
@@ -32,5 +32,5 @@
 <%= "-----" if @profile.self_introduce.blank? %>
 <%= @profile.self_introduce %>
 
-<p><%= link_to 'プロフィール設定',profile_path(current_user) %></p>
+<p><%= link_to 'プロフィール設定', edit_profile_path(current_user) %></p>
 

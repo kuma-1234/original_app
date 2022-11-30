@@ -23,6 +23,6 @@ class ProfilesController < ApplicationController
   private 
 
   def params_profile
-    params.require(:profile).permit(:prefecture, :drone_name, :main_crop, :introduction_year, :self_introduction)
+    params.require(:profile).permit(:prefecture, :drone_name, :main_crop, :introduce_year, :self_introduce)
   end
 end

@@ -1,0 +1,42 @@
+<h1>プロフィール設定</h1>
+
+<%= form_with(model: @profile, local: true) do |f|   %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this <%= @profile.name %> from being saved:</h2>
+      <ul>
+      <% @profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :prefecture %><br />
+    <%= f.select :prefecture, Profile.prefectures.keys, {} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :drone_name %>
+    <%= f.text_field :drone_name, placeholder: "MG-1/T30/XAG P30/飛助 ect..." %>
+  </div>
+
+  <div class="field">
+    <%= f.label :main_crop %>
+    <%= f.text_field :main_crop, placeholder: "米/大豆/玉ねぎ etc..." %>
+  </div>
+
+  <div class="field">
+    <%= f.label :introduce_year %>
+    <%= f.date_select :introduce_year, :discard_day => true, :discard_month => true  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :self_introduce %>
+    <%= f.text_area :self_introduce, 
+        placeholder: "◯◯県で農業をしている太郎といいます！主に米を生産していて防除にドローンを使用しています。防除だけでなく色々な使い方をしたい〜。" %>
+  </div>
+
+  <%= f.submit "プロフィール設定を更新" %>
+<% end %>
