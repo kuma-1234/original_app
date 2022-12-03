@@ -9,7 +9,7 @@ class BlogsController < ApplicationController
   end
 
   def create
-    @blog = Blog.new(blog_params)
+    @blog = current_user.blogs.build(blog_params)
     if @blog.save
       redirect_to blogs_path, notice: '新規作成しました！'
     else

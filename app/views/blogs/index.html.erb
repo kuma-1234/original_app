@@ -1,6 +1,14 @@
 <h1>みんなの投稿</h1>
 
 <% @blogs.each do |blog| %>
+  <% if blog.user.icon.present? %>
+    <%= image_tag blog.user.icon.url, class: 'rounded-circle mr15', width: '40', height: '40' %>
+  <% else %>
+    <%= image_tag 'guest_user.png', class: 'rounded-circle mr15', width: '40', height: '40' %>
+  <% end %>
+  
+  <%= blog.user.name %>
+
   <p>
     <% if blog.picture.present? %>
       <%= image_tag blog.picture.to_s, size:'300x200' %>
