@@ -21,6 +21,10 @@
   </div>
 
   <div class="field">
+    <%= f.collection_check_boxes(:drone_ids, Drone.where(profile_id: current_user.id), :id, :drone_name) %>
+  </div>
+
+  <div class="field">
     <%= f.label :pesticide_type %>
     <%= f.select :pesticide_type, Blog.pesticide_types.keys, include_blank: '選択してください' %>
   </div>
