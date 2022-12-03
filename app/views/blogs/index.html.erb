@@ -3,7 +3,7 @@
 <% @blogs.each do |blog| %>
   <p>
     <% if blog.picture.present? %>
-      <%= image_tag blog.picture.to_s %>
+      <%= image_tag blog.picture.to_s, size:'300x200' %>
     <% else %>
       <%= image_tag 'no_image.png'%>
     <% end %>

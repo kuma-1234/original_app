@@ -13,4 +13,6 @@ class Blog < ApplicationRecord
     "にんじん":'11',"ブロッコリー":'12',"とうもろこし":'13',"まつ":'14',"果実類":'15',
     "その他野菜類":'16',"その他":'17'
   }, _prefix: true
+
+  mount_uploader :picture, ImageUploader
 end
