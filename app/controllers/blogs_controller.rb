@@ -46,7 +46,7 @@ class BlogsController < ApplicationController
   def blog_params
     params.require(:blog).permit(
       :picture, :content, :work_date, :pesticide_type, :pesticide_name, 
-      :flight_speed, :rpm, :shutter_opening, :crop, :variety, :spray_area
+      :flight_speed, :rpm, :shutter_opening, :crop, :variety, :spray_area, {drone_ids: []}
     )
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_03_071128) do
+ActiveRecord::Schema.define(version: 2022_12_03_123904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 2022_12_03_071128) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "profile_id", null: false
     t.index ["profile_id"], name: "index_drones_on_profile_id"
+  end
+
+  create_table "match_drones", force: :cascade do |t|
+    t.bigint "blog_id"
+    t.bigint "drone_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["blog_id"], name: "index_match_drones_on_blog_id"
+    t.index ["drone_id"], name: "index_match_drones_on_drone_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -70,5 +79,7 @@ ActiveRecord::Schema.define(version: 2022_12_03_071128) do
   end
 
   add_foreign_key "drones", "profiles"
+  add_foreign_key "match_drones", "blogs"
+  add_foreign_key "match_drones", "drones"
   add_foreign_key "profiles", "users"
 end

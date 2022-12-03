@@ -1,4 +1,7 @@
 class Blog < ApplicationRecord
+  has_many :match_drones, dependent: :destroy
+  has_many :drones, through: :match_drones
+
   enum pesticide_type: {
     "液剤":1,
     "液剤(肥料)":2,

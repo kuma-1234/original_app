@@ -5,12 +5,17 @@
     <% if blog.picture.present? %>
       <%= image_tag blog.picture.to_s, size:'300x200' %>
     <% else %>
-      <%= image_tag 'no_image.png'%>
+      <%= image_tag 'No image.png'%>
     <% end %>
   </p>
 
   <p>作業実施日</p>
   <%= blog.work_date %>
+
+  <p>使用した機体</p>
+  <% blog.drones.each do |drone| %>
+    <a>■</a><%= drone.drone_name %>
+  <% end %> 
 
   <p>剤型</p>
   <%= blog.pesticide_type %>
