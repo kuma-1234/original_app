@@ -1,0 +1,69 @@
+<%= form_with(model: @blog, local: true) do |f|   %>
+  <% if @blog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this <%= @profile.name %> from being saved:</h2>
+      <ul>
+      <% @blog.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :picture %><br />
+    <%= f.file_field :picture %>
+  </div>
+
+  <div class="field">
+    <%= f.label :work_date %>
+    <%= f.date_select :work_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pesticide_type %>
+    <%= f.select :pesticide_type, Blog.pesticide_types.keys, include_blank: '選択してください' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pesticide_name %>
+    <%= f.text_field :pesticide_name, placeholder: '◯◯１キロ粒剤' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :flight_speed %>
+    <a>時速<%= f.text_field :flight_speed, placeholder: '18' %>km</a>
+  </div>
+
+  <div class="field">
+    <%= f.label :rpm %>
+    <a><%= f.text_field :rpm, placeholder: '1200' %>回転</a>
+  </div>
+
+  <div class="field">
+    <%= f.label :shutter_opening %>
+    <a><%= f.text_field :shutter_opening, placeholder: '18' %>%</a>
+  </div>
+
+  <div class="field">
+    <%= f.label :crop %>
+    <%= f.select :crop, Blog.crops.keys, include_blank: '選択してください' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :variety %>
+    <%= f.text_field :variety, placeholder: 'コシヒカリ' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :spray_area %>
+    <a><%= f.text_field :spray_area, placeholder: '0.7' %>ha</a>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content, placeholder: blog_content %>
+  </div>
+
+  <%= f.submit "作成" %>
+<% end %>
