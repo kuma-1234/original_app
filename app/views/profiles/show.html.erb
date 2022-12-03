@@ -17,14 +17,22 @@
 <br>
 
 <label>所有ドローン</label>
-<%= "-----" if @profile.main_crop.blank? %>
-<%= @profile.main_crop %>
+<% @drones.each do |drone| %>
+  <%= "-----" if drone.drone_name.blank? %>
+  <%= drone.drone_name %>
+<% end %>
 
 <br>
 
 <label>ドローン導入年度</label>
 <%= "-----" if @profile.introduce_year.blank? %>
 <%= @profile.introduce_year %>
+
+<br>
+
+<label>主な生産作物</label>
+<%= "-----" if @profile.main_crop.blank? %>
+<%= @profile.main_crop %>
 
 <br>
 
