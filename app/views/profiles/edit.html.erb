@@ -3,7 +3,7 @@
 <%= form_with(model: @profile, local: true) do |f|   %>
   <% if @profile.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this <%= @profile.name %> from being saved:</h2>
+    <h2><%= @profile.errors.count %>件のエラーがあります。</h2>
       <ul>
       <% @profile.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -17,9 +17,13 @@
     <%= f.select :prefecture, Profile.prefectures.keys, {} %>
   </div>
 
-  <div class="field">
-    <%= f.label :drone_name %>
-    <%= f.text_field :drone_name, placeholder: "MG-1/T30/XAG P30/飛助 ect..." %>
+  <div class="parents">
+    <%= f.fields_for :drones do |d| %>
+      <%= render 'drone_fields', f: d %>
+    <% end %>
+      <div class="links">
+        <%= link_to_add_association "機体を追加", f, :drones %>
+      </div>
   </div>
 
   <div class="field">

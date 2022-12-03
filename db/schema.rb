@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_02_084757) do
+ActiveRecord::Schema.define(version: 2022_12_03_071128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,9 +31,16 @@ ActiveRecord::Schema.define(version: 2022_12_02_084757) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "drones", force: :cascade do |t|
+    t.string "drone_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "profile_id", null: false
+    t.index ["profile_id"], name: "index_drones_on_profile_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string "prefecture"
-    t.string "drone_name"
     t.string "main_crop"
     t.date "introduce_year"
     t.text "self_introduce"
@@ -62,5 +69,6 @@ ActiveRecord::Schema.define(version: 2022_12_02_084757) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "drones", "profiles"
   add_foreign_key "profiles", "users"
 end
