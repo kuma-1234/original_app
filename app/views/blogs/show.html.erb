@@ -61,8 +61,20 @@
   <p>散布面積</p>
   <a><%= @blog.spray_area %>ha</a>
 
-  <p>コメント</p>
+  <p>日記帳</p>
   <%= @blog.content %>
+
+  <p>コメント投稿</p>
+
+  <!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
+  <div id="comments_area">
+    <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+    <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
+  </div>
+
+  <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+  <%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>
+
   
   <p>
     <%= link_to 'みんなの投稿', blogs_path %>
