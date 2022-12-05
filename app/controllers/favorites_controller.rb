@@ -1,5 +1,9 @@
 class FavoritesController < ApplicationController
 
+  def index
+    @favorites = current_user.favorites.order(created_at: :desc)
+  end
+
   def create
     @blog = Blog.find(params[:blog_id])
     @favorite = Favorite.new(user_id: current_user.id, blog_id: @blog.id)

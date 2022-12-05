@@ -1,0 +1,48 @@
+<h1>お気に入り一覧</h1>
+<% if @favorites.present? %>
+  <% @favorites.each do |favorite| %>
+    <% if favorite.blog.user.icon.present? %>
+      <%= image_tag favorite.blog.user.icon.url, class: 'rounded-circle mr15', width: '40', height: '40' %>
+    <% else %>
+      <%= image_tag 'guest_user.png', class: 'rounded-circle mr15', width: '40', height: '40' %>
+    <% end %>
+    
+    <%= favorite.blog.user.name %>
+
+    <p>
+      <% if favorite.blog.picture.present? %>
+        <%= image_tag favorite.blog.picture.to_s, size:'300x200' %>
+      <% else %>
+        <%= image_tag 'No image.png'%>
+      <% end %>
+    </p>
+
+    <p>作業実施日 : <%= favorite.blog.work_date %></p>
+
+    <p>使用した機体 : 
+      <% favorite.blog.drones.each do |drone| %>
+        <a>■</a><%= drone.drone_name %>
+      <% end %> 
+    </p>
+
+    <p>剤型 : <%= favorite.blog.pesticide_type %></p>
+
+    <p>散布農薬名 : <%= favorite.blog.pesticide_name %></p>
+
+    <p>散布対象作物 : <%= favorite.blog.crop %></p>
+
+    <p>品種名 : <%= favorite.blog.variety %></p>
+    
+
+    <p>日記帳</p>
+    <%= truncate(favorite.blog.content, length: 30) %>
+
+    <div id="favorite_blog_<%= favorite.blog.id %>">
+      <%= render 'favorites/favorite',  blog: favorite.blog %>
+    </div>
+    
+    <p>
+      <%= link_to '詳細', blog_path(favorite.blog) %>
+    </p>
+  <% end %>
+<% end %>
