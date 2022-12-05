@@ -17,25 +17,22 @@
     <% end %>
   </p>
 
-  <p>作業実施日</p>
-  <%= blog.work_date %>
+  <p>作業実施日 : <%= blog.work_date %></p>
 
-  <p>使用した機体</p>
-  <% blog.drones.each do |drone| %>
-    <a>■</a><%= drone.drone_name %>
-  <% end %> 
+  <p>使用した機体 : 
+    <% blog.drones.each do |drone| %>
+      <a>■</a><%= drone.drone_name %>
+    <% end %> 
+  </p>
 
-  <p>剤型</p>
-  <%= blog.pesticide_type %>
+  <p>剤型 : <%= blog.pesticide_type %></p>
 
-  <p>散布農薬名</p>
-  <%= blog.pesticide_name %>
+  <p>散布農薬名 : <%= blog.pesticide_name %></p>
 
-  <p>散布対象作物</p>
-  <%= blog.crop %>
+  <p>散布対象作物 : <%= blog.crop %></p>
 
-  <p>品種名</p>
-  <%= blog.variety %>
+  <p>品種名 : <%= blog.variety %></p>
+  
 
   <p>日記帳</p>
   <%= truncate(blog.content, length: 30) %>
