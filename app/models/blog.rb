@@ -1,6 +1,7 @@
 class Blog < ApplicationRecord
   has_many :match_drones, dependent: :destroy
   has_many :drones, through: :match_drones
+  belongs_to :user
 
   enum pesticide_type: {
     "液剤":1,
