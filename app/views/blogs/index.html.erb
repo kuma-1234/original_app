@@ -37,8 +37,12 @@
   <p>品種名</p>
   <%= blog.variety %>
 
-  <p>コメント</p>
+  <p>日記帳</p>
   <%= truncate(blog.content, length: 30) %>
+
+  <div id="favorite_blog_<%= blog.id %>">
+    <%= render 'favorites/favorite',  blog: blog %>
+  </div>
   
   <p>
     <%= link_to '編集', edit_blog_path(blog) %>
