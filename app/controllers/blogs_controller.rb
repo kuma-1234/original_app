@@ -21,6 +21,7 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
     @comments = @blog.comments
     @comment = @blog.comments.build
+    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
   end
 
   def edit

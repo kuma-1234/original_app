@@ -64,6 +64,10 @@
   <p>日記帳</p>
   <%= @blog.content %>
 
+  <div id="favorite_<%=@blog.id %>">
+    <%= render 'favorites/favorite', blog: @blog %>
+  </div>
+
   <p>コメント投稿</p>
 
   <!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
