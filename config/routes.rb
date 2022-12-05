@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   }
   # root 'homes#index'
   resources :profiles, only: [:edit, :update, :show]
-  resources :blogs
+  resources :blogs do
+    resources :comments
+  end
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
 end
