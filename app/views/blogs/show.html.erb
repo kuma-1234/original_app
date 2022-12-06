@@ -98,6 +98,7 @@
   
   <p>
     <%= link_to 'みんなの投稿', blogs_path %>
+    <%= link_to 'お気に入り一覧', favorites_path %>
     <%= link_to '編集', edit_blog_path(@blog) %>
     <%= link_to '削除', blog_path(@blog), method: :delete, data:{confirm:'本当に削除しても良いですか？'} %>
   </p>
