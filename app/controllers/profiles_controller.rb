@@ -1,5 +1,9 @@
 class ProfilesController < ApplicationController
 
+  def index
+    @profiles = Profile.all
+  end
+
   def edit
     @user = User.find(params[:id])
     @profile = @user.profile

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     password: 'users/password'
   }
   # root 'homes#index'
-  resources :profiles, only: [:edit, :update, :show]
+  resources :profiles, only: [:edit, :update, :show, :index]
   resources :blogs do
     resources :comments
     resource :favorites, only:[:create, :destroy]

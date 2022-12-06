@@ -1,0 +1,38 @@
+<h1>登録ユーザーの一覧</h1>
+
+<% @profiles.each do |profile| %>
+  <p>
+    <% if profile.user.icon.present? %>
+      <%= image_tag profile.user.icon.url, class: 'rounded-circle mr15', width: '40', height: '40' %>
+    <% else %>
+      <%= image_tag 'guest_user.png', class: 'rounded-circle mr15', width: '40', height: '40' %>
+    <% end %>
+    <%= profile.user.name %>
+  </p>
+
+  <label>住居地</label>
+  <%= "-----" if profile.user.profile.prefecture.blank? %>
+  <%= profile.user.profile.prefecture %>
+
+  <br>
+
+  <label>所有ドローン</label>
+  <% profile.drones.each do |drone| %>
+    <%= drone.drone_name %>
+  <% end %>
+
+  <br>
+
+  <label>主な生産作物</label>
+  <%= "-----" if profile.user.profile.main_crop.blank? %>
+  <%= profile.user.profile.main_crop %>
+
+  <br>
+
+  <label>自己紹介</label>
+  <%= "-----" if profile.user.profile.self_introduce.blank? %>
+  <%= profile.user.profile.self_introduce %>
+<% end %>
+
+<br>
+<%= link_to 'みんなの投稿', blogs_path %>
