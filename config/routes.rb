@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :profiles, only: [:edit, :update, :show]
   resources :blogs do
     resources :comments
+    resource :favorites, only:[:create, :destroy]
   end
+  resources :favorites, only:[:index]
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
 end

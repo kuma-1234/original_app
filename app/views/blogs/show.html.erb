@@ -1,5 +1,13 @@
 <h1>詳細</h1>
 
+<% if @blog.user.icon.present? %>
+    <%= image_tag @blog.user.icon.url, class: 'rounded-circle mr15', width: '40', height: '40' %>
+<% else %>
+  <%= image_tag 'guest_user.png', class: 'rounded-circle mr15', width: '40', height: '40' %>
+<% end %>
+  
+<%= @blog.user.name %>
+
 <p>
     <% if @blog.picture.present? %>
       <%= image_tag @blog.picture.to_s, width: '50%', height: '35%' %>
@@ -8,61 +16,73 @@
     <% end %>
   </p>
 
-  <p>作業実施日</p>
-  <%= @blog.work_date %>
+  <p>作業実施日 : <%= @blog.work_date %></p>
 
-  <p>使用した機体</p>
-  <% @blog.drones.each do |drone| %>
-    <a>■</a><%= drone.drone_name %>
-  <% end %> 
+  <p>使用した機体 : 
+    <% @blog.drones.each do |drone| %>
+      <a>■</a><%= drone.drone_name %>
+    <% end %> 
+  </p>
 
-  <p>剤型</p>
-  <%= @blog.pesticide_type %>
+  <p>剤型 : <%= @blog.pesticide_type %></p>
 
-  <p>散布農薬名</p>
-  <%= @blog.pesticide_name %>
+  <p>散布農薬名 : <%= @blog.pesticide_name %></p>
 
-  <p>飛行速度</p>
-  <a> 時速
-    <% if @blog.flight_speed.present? %>
-      <%= @blog.flight_speed %>
-    <% else %>
-      <%= '----' %>
-    <% end %>
-    km
-  </a>
+  <p>飛行速度 : 
+    <a> 時速
+      <% if @blog.flight_speed.present? %>
+        <%= @blog.flight_speed %>
+      <% else %>
+        <%= '----' %>
+      <% end %>
+      km
+    </a>
+  </p>
 
-  <p>インペラ回転数</p>
-  <a>
-    <% if @blog.rpm.present? %>
-      <%= @blog.rpm %>
-    <% else %>
-      <%= ' ---- ' %>
-    <% end %>
-    回転
-  </a>
+  <p>インペラ回転数 : 
+    <a>
+      <% if @blog.rpm.present? %>
+        <%= @blog.rpm %>
+      <% else %>
+        <%= ' ---- ' %>
+      <% end %>
+      回転
+    </a>
+  </p>
 
-  <p>シャッター開度</p>
-  <a>
-    <% if @blog.shutter_opening.present? %>
-      <%= @blog.shutter_opening %>
-    <% else %>
-      <%= '----' %>
-    <% end %>
-    %
-  </a>
+  <p>シャッター開度 : 
+    <a>
+      <% if @blog.shutter_opening.present? %>
+        <%= @blog.shutter_opening %>
+      <% else %>
+        <%= '----' %>
+      <% end %>
+      %
+    </a>
+  </p>
 
-  <p>散布対象作物</p>
-  <%= @blog.crop %>
+  <p>散布対象作物 : <%= @blog.crop %></p>
 
-  <p>品種名</p>
-  <%= @blog.variety %>
+  <p>品種名 : <%= @blog.variety %></p>
+  
 
-  <p>散布面積</p>
-  <a><%= @blog.spray_area %>ha</a>
+  <p>散布面積 : 
+    <a>
+      <% if @blog.spray_area.present? %>
+        <%= @blog.spray_area %>
+      <% else %>
+        <%= '----' %>
+      <% end %>
+      ha
+    </a>
+  </p>
 
   <p>日記帳</p>
   <%= @blog.content %>
+
+  <div id="favorite_<%=@blog.id %>">
+    <%= render 'favorites/favorite', blog: @blog %>
+  </div>
 
   <p>コメント投稿</p>
 
@@ -78,6 +98,7 @@
   
   <p>
     <%= link_to 'みんなの投稿', blogs_path %>
+    <%= link_to 'お気に入り一覧', favorites_path %>
     <%= link_to '編集', edit_blog_path(@blog) %>
     <%= link_to '削除', blog_path(@blog), method: :delete, data:{confirm:'本当に削除しても良いですか？'} %>
   </p>
