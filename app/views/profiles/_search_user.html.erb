@@ -1,8 +1,12 @@
 <%= search_form_for @profile_q do |f| %>
-  <p><%= f.label :name %>
+  <p><%= f.label :prefecture %>
     <%= f.select :prefecture_eq, Profile.prefectures.keys.map, include_blank:'選択してください' %>
   </p>
   <p><%= f.label :main_crop %>
     <%= f.search_field :main_crop, placeholder: '生産作物で検索'%>
+  </p>
+  <p><%= f.label :drone_name %>
+    <%= f.search_field :drones_drone_name_cont, placeholder: '機体名' %>
+  </p>
   <%= f.submit "検索" %>
 <% end %>
