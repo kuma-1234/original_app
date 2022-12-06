@@ -1,5 +1,7 @@
 <h1>登録ユーザーの一覧</h1>
 
+<%= render 'search_user' %>
+
 <% @profiles.each do |profile| %>
   <p>
     <% if profile.user.icon.present? %>
@@ -24,14 +26,14 @@
   <br>
 
   <label>主な生産作物</label>
-  <%= "-----" if profile.user.profile.main_crop.blank? %>
-  <%= profile.user.profile.main_crop %>
+  <%= "-----" if profile.main_crop.blank? %>
+  <%= profile.main_crop %>
 
   <br>
 
   <label>自己紹介</label>
-  <%= "-----" if profile.user.profile.self_introduce.blank? %>
-  <%= profile.user.profile.self_introduce %>
+  <%= "-----" if profile.self_introduce.blank? %>
+  <%= profile.self_introduce %>
 <% end %>
 
 <br>
