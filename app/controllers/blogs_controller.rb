@@ -1,7 +1,8 @@
 class BlogsController < ApplicationController
 
   def index
-    @blogs = Blog.all
+    @q = Blog.ransack(params[:q])
+    @blogs = @q.result(distinct: true).order("created_at desc")
   end
 
   def new
@@ -11,6 +12,7 @@ class BlogsController < ApplicationController
   def create
     @blog = current_user.blogs.build(blog_params)
     if @blog.save
+      binding.pry
       redirect_to blogs_path, notice: '新規作成しました！'
     else
       render :new
