@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   resources :blogs do
     resources :comments
     resource :favorites, only:[:create, :destroy]
+    collection do
+      get :yourself_blog
+    end
   end
   resources :favorites, only:[:index]
   mount LetterOpenerWeb::Engine, at: "/letter_opener"

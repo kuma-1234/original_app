@@ -45,6 +45,11 @@ class BlogsController < ApplicationController
     redirect_to blogs_path, notice: "ブログを削除しました！"
   end
 
+  def yourself_blog
+    @q = current_user.blogs.ransack(params[:q])
+    @blogs = @q.result(distinct: true).order("created_at desc")
+  end
+
 
   private
 
