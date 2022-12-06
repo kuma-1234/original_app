@@ -5,10 +5,13 @@ Rails.application.routes.draw do
     password: 'users/password'
   }
   # root 'homes#index'
-  resources :profiles, only: [:edit, :update, :show]
+  resources :profiles, only: [:edit, :update, :show, :index]
   resources :blogs do
     resources :comments
     resource :favorites, only:[:create, :destroy]
+    collection do
+      get :yourself_blog
+    end
   end
   resources :favorites, only:[:index]
   mount LetterOpenerWeb::Engine, at: "/letter_opener"

@@ -1,5 +1,10 @@
 class ProfilesController < ApplicationController
 
+  def index
+    @profile_q = Profile.ransack(params[:q])
+    @profiles = @profile_q.result(distinct: true).order("created_at desc")
+  end
+
   def edit
     @user = User.find(params[:id])
     @profile = @user.profile
