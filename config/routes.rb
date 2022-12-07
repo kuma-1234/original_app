@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'comments/create'
   devise_for :users, controllers: {
     registrations: 'users/registrations',

@@ -14,6 +14,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
 gem 'rexml'
 gem 'devise-i18n'
+gem 'rails_admin', '~> 3.0'
+gem 'cancancan'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'cocoon'
