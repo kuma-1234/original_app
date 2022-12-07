@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
+  # root 'homes#index'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  get 'comments/create'
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     password: 'users/password'
   }
-  # root 'homes#index'
+  
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+    post 'users/guest_admin_sign_in', to: 'users/sessions#guest_admin_sign_in'
+  end
+
   resources :profiles, only: [:edit, :update, :show, :index]
   resources :blogs do
     resources :comments
