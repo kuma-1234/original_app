@@ -50,6 +50,11 @@ class BlogsController < ApplicationController
     @blogs = @q.result(distinct: true).order("created_at desc")
   end
 
+  def other_blog
+    @blogs = Blog.where(user_id: params[:id])
+    # blog = Blog.find(params[:id])
+  end
+
 
   private
 
