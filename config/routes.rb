@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     collection do
       get :yourself_blog
     end
+    member do
+      get :other_blog
+    end
   end
   resources :favorites, only:[:index]
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
