@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
 
   def index
-    @q = Blog.ransack(params[:q])
+    @q = Blog.status_public.ransack(params[:q])
     @blogs = @q.result(distinct: true).order("created_at desc")
   end
 
@@ -24,6 +24,10 @@ class BlogsController < ApplicationController
     @comments = @blog.comments
     @comment = @blog.comments.build
     @favorite = current_user.favorites.find_by(blog_id: @blog.id)
+
+    if @blog.status_private? && @blog.user != current_user
+      redirect_to blogs_path, notice: 'このページにはアクセスできません！'
+    end
   end
 
   def edit
@@ -51,8 +55,7 @@ class BlogsController < ApplicationController
   end
 
   def other_blog
-    @blogs = Blog.where(user_id: params[:id])
-    # blog = Blog.find(params[:id])
+    @blogs = Blog.status_public.where(user_id: params[:id]).order("created_at desc")
   end
 
 
@@ -61,7 +64,7 @@ class BlogsController < ApplicationController
   def blog_params
     params.require(:blog).permit(
       :picture, :content, :work_date, :pesticide_type, :pesticide_name, 
-      :flight_speed, :rpm, :shutter_opening, :crop, :variety, :spray_area, {drone_ids: []}
+      :flight_speed, :rpm, :shutter_opening, :crop, :variety, :spray_area, :status, {drone_ids: []}
     )
   end
 end
