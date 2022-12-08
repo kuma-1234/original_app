@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_08_045646) do
+ActiveRecord::Schema.define(version: 2022_12_08_052336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 2022_12_08_045646) do
   create_table "profiles", force: :cascade do |t|
     t.string "prefecture"
     t.string "main_crop"
-    t.date "introduce_year"
     t.text "self_introduce"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
