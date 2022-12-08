@@ -2,8 +2,8 @@ class CommentsController < ApplicationController
 
   def create
     @blog = Blog.find(params[:blog_id])
-    @comment = @blog.comments.build(comment_params)
-
+    @comment = current_user.comments.build(comment_params)
+    @comment.blog_id = @blog.id
     respond_to do |format|
       if @comment.save
         format.js { render :index }
