@@ -1,6 +1,40 @@
 ---
 ja:
   activerecord:
+    models:
+      user: ユーザ-
+      profile: "プロフィール"
+      blog: "日記"
+      drone: "所有ドローン"
+      favorite: "お気に入り"
+      comment: "コメント投稿"
+      match_drone: "ドローンのマッチング"
+    attributes: 
+      user:
+        name: "ユーザー名"
+        email: "メールアドレス"
+        icon: "アイコン"
+      profile:
+        prefecture: "居住地"
+        main_crop: "主な生産作物"
+        self_introduce: "自己紹介文"
+      blog:
+        picture: "投稿写真"
+        content: "日記帳"
+        work_date: "作業実施日"
+        pesticide_type: "剤型"
+        pesticide_name: "農薬名"
+        flight_speed: "飛行速度"
+        rpm: "インペラ回転数"
+        shutter_opening: "シャッター開度"
+        crop: "散布作物名"
+        variety: "品種名"
+        spray_area: "散布面積"
+        status: "公開・非公開"
+      comment:
+        talk: "コメント投稿文"
+      drone:
+        drone_name: "ドローン名"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
