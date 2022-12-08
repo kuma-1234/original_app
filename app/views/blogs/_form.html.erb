@@ -1,7 +1,7 @@
 <%= form_with(model: @blog, local: true) do |f|   %>
   <% if @blog.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this <%= @profile.name %> from being saved:</h2>
+    <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
       <ul>
       <% @blog.errors.full_messages.each do |message| %>
         <li><%= message %></li>

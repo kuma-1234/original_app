@@ -12,8 +12,10 @@
           <%= comment.talk %>
         </p>
         
+        <% if current_user.id == comment.user_id %>
         <p><%= link_to "コメント削除", blog_comment_path(comment.blog_id, comment.id), method: :delete, remote: true,
                                         data: { confirm: "本当に削除しますか?"} %></p>
+        <% end %>
       </li>
     <% end %>
   <% end %>
