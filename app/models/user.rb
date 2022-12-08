@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   mount_uploader :icon, ImageUploader
 
+  validates :name, presence: true
+
   def favorited_by?(blog_id)
     favorites.where(blog_id: blog_id).exists?
   end
