@@ -1,11 +1,15 @@
-<h1>マイページ</h1>
+<% if current_user.id == @user.id %>
+  <h1>マイページ</h1>
+<% else %>
+  <h1><%= @user.name %>さんのページ</h1>
+<% end %>
 
 <% if @user.icon.present? %>
   <%= image_tag @user.icon.url, size: '100x100' %>
 <% else %>
   <%= image_tag 'guest_user.png', size: '100x100' %>
 <% end %>
-<%= @user.name %>
+<p><%= @user.name %></p>
 
 <% if current_user.id == @user.id %>
   <%= link_to 'アカウント設定', edit_user_registration_path(current_user) %>
@@ -50,6 +54,3 @@
 <% else %>
   <%= link_to "#{@profile.user.name}さんの投稿一覧", other_blog_blog_path(@profile.user) %>
 <% end %>
-
-<%= link_to '登録ユーザーの一覧', profiles_path %>
-

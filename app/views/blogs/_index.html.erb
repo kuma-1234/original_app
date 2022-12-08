@@ -1,9 +1,9 @@
 <% @blogs.each do |blog| %>
   <p>
   <% if blog.user.icon.present? %>
-    <%= image_tag blog.user.icon.url, class: 'rounded-circle mr15', width: '40', height: '40' %>
+    <%= link_to image_tag(blog.user.icon.url, size: '50x50'), profile_path(blog.user_id) %>
   <% else %>
-    <%= image_tag 'guest_user.png', class: 'rounded-circle mr15', width: '40', height: '40' %>
+    <%= link_to image_tag('guest_user.png', size: '50x50'), profile_path(blog.user_id) %>
   <% end %>
   <%= blog.user.name %>
   </p>

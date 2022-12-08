@@ -62,6 +62,7 @@ class BlogsController < ApplicationController
 
   def other_blog
     @blogs = Blog.status_public.where(user_id: params[:id]).order("created_at desc")
+    @blog = @blogs.find_by(user_id: params[:id])
   end
 
 

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # root 'homes#index'
+  root 'homes#show'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   devise_for :users, controllers: {
