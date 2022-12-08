@@ -6,7 +6,10 @@
   <%= image_tag 'guest_user.png', size: '100x100' %>
 <% end %>
 <%= @user.name %>
-<%= link_to 'アカウント設定', edit_user_registration_path(current_user) %>
+
+<% if current_user.id == @user.id %>
+  <%= link_to 'アカウント設定', edit_user_registration_path(current_user) %>
+<% end %>
 
 <br>
 
@@ -24,12 +27,6 @@
 
 <br>
 
-<label>ドローン導入年度</label>
-<%= "-----" if @profile.introduce_year.blank? %>
-<%= @profile.introduce_year %>
-
-<br>
-
 <label>主な生産作物</label>
 <%= "-----" if @profile.main_crop.blank? %>
 <%= @profile.main_crop %>
@@ -40,12 +37,16 @@
 <%= "-----" if @profile.self_introduce.blank? %>
 <%= @profile.self_introduce %>
 
+<% if current_user.id == @user.id %>
 <p><%= link_to 'プロフィール設定', edit_profile_path(current_user) %></p>
-<p><%= link_to 'お気に入り一覧', favorites_path %></p>
+<% end %>
+
+
 <p><%= link_to 'みんなの投稿', blogs_path %></p>
 
-<% if current_user.id == @profile.user_id %>
+<% if current_user.id == @user.id %>
   <%= link_to '自分の投稿一覧', yourself_blog_blogs_path %>
+  <p><%= link_to 'お気に入り一覧', favorites_path %></p>
 <% else %>
   <%= link_to "#{@profile.user.name}さんの投稿一覧", other_blog_blog_path(@profile.user) %>
 <% end %>

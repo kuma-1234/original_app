@@ -7,8 +7,12 @@ class ProfilesController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @profile = @user.profile
-    @profile.drones.build
+    if current_user == @user
+      @profile = @user.profile
+      @profile.drones.build
+    else
+      redirect_to profile_path(current_user), notice:'他のユーザーは編集できません！'
+    end
   end
 
   def update
@@ -30,7 +34,7 @@ class ProfilesController < ApplicationController
   private 
 
   def params_profile
-    params.require(:profile).permit(:prefecture, :drone_name, :main_crop, :introduce_year, :self_introduce,
+    params.require(:profile).permit(:prefecture, :drone_name, :main_crop, :self_introduce,
                                     drones_attributes: [ :id, :drone_name, :_destroy ])
   end
 end

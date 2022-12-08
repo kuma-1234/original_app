@@ -41,8 +41,10 @@
   </div>
   
   <p>
-    <%= link_to '編集', edit_blog_path(blog) %>
     <%= link_to '詳細', blog_path(blog) %>
-    <%= link_to '削除', blog_path(blog), method: :delete, data:{confirm:'本当に削除しても良いですか？'} %>
+    <% if current_user.id == blog.user_id %>
+      <%= link_to '編集', edit_blog_path(blog) %>
+      <%= link_to '削除', blog_path(blog), method: :delete, data:{confirm:'本当に削除しても良いですか？'} %>
+    <% end %>
   </p>
 <% end %>

@@ -1,12 +1,12 @@
 <% if current_user.favorited_by?(blog.id) %>
   <%= link_to blog_favorites_path(blog), class: "like-link", method: :delete, remote: true do %> 
-    <i class="fa-solid fa-heart"></i> いいね済み
+    <i class="fa-solid fa-heart"></i>いいね済み
   <% end %>
   <%= blog.favorites.count %></td>
 
 <% else %>
   <%= link_to blog_favorites_path(blog), class: "like-link",method: :post, remote: true do %>
-    <i class="fa-regular fa-heart"></i>　いいね
+    <i class="fa-regular fa-heart"></i>いいね
   <% end %>
   <%= blog.favorites.count %></td>
 <% end %>
