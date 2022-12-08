@@ -10,6 +10,6 @@ class Users::SessionsController < Devise::SessionsController
   def guest_admin_sign_in
     user = User.guest_admin
     sign_in user
-    redirect_to blogs_path, notice:'管理者といてログインしました'
+    redirect_to blogs_path, notice:'管理者としてログインしました'
   end
 end
