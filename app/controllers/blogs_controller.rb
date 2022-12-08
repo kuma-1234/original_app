@@ -12,7 +12,6 @@ class BlogsController < ApplicationController
   def create
     @blog = current_user.blogs.build(blog_params)
     if @blog.save
-      binding.pry
       redirect_to blogs_path, notice: '新規作成しました！'
     else
       render :new
@@ -32,6 +31,9 @@ class BlogsController < ApplicationController
 
   def edit
     @blog = Blog.find(params[:id])
+    if current_user.id != @blog.user_id
+      redirect_to blogs_path, notice: '他のユーザーの日記は編集できません！'
+    end
   end
 
   def update
@@ -45,8 +47,12 @@ class BlogsController < ApplicationController
 
   def destroy
     @blog = Blog.find(params[:id])
-    @blog.destroy
-    redirect_to blogs_path, notice: "ブログを削除しました！"
+    if current_user.id == @blog.user_id
+      @blog.destroy
+      redirect_to blogs_path, notice: "ブログを削除しました！"
+    else
+      redirect_to blogs_path, notice: '他のユーザーの日記は削除できません！'
+    end
   end
 
   def yourself_blog

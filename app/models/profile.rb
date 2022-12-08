@@ -1,6 +1,6 @@
 class Profile < ApplicationRecord
   belongs_to :user
-  has_many :drones, inverse_of: :profile
+  has_many :drones, dependent: :destroy, inverse_of: :profile
   accepts_nested_attributes_for :drones, reject_if: :all_blank, allow_destroy: true
 
   enum prefecture:{
