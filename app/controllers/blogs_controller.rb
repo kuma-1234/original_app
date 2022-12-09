@@ -57,8 +57,9 @@ class BlogsController < ApplicationController
   end
 
   def yourself_blog
-    @q = current_user.blogs.ransack(params[:q])
-    @blogs = @q.result(distinct: true).order("created_at desc")
+    @search = Blog.where(user_id: current_user.id).ransack(params[:q])
+    @blogs = @search.result(distinct: true).order("created_at desc")
+    @search = Blog.where(user_id: current_user.id).ransack
   end
 
   def other_blog
