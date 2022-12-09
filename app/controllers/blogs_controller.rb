@@ -3,6 +3,7 @@ class BlogsController < ApplicationController
   def index
     @q = Blog.status_public.ransack(params[:q])
     @blogs = @q.result(distinct: true).order("created_at desc")
+    @q = Blog.ransack
   end
 
   def new

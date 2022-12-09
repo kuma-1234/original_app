@@ -12,6 +12,9 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   mount_uploader :icon, ImageUploader
 
+  validates :name, presence: true
+  validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+
   def favorited_by?(blog_id)
     favorites.where(blog_id: blog_id).exists?
   end
