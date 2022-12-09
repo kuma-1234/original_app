@@ -1,0 +1,26 @@
+<%= search_form_for @search, url: yourself_blog_blogs_path do |f| %>
+  <form name="blog_search">
+    <p><%= f.label :drone_name,'機体で検索' %>
+      <%= f.search_field :drones_drone_name_cont, placeholder: '機体名' %>
+    </p>
+    <p><%= f.label :pesticide_type %>
+    <%= f.radio_button :pesticide_type_eq, '', {:checked => true}%>指定なし
+    <%= f.radio_button :pesticide_type_eq, 1%>液剤 
+    <%= f.radio_button :pesticide_type_eq, 2%>液剤（肥料）
+    <%= f.radio_button :pesticide_type_eq, 3%>粒剤 
+    <%= f.radio_button :pesticide_type_eq, 4%>粒剤（肥料）
+    <%= f.radio_button :pesticide_type_eq, 5%>その他 
+    <p><%= f.label :pesticide_name %>
+      <%= f.search_field :pesticide_name_cont, placeholder: '農薬名'%>
+    </p>
+    <p><%= f.label :crop, '作物で検索' %>
+      <%= f.select :crop_eq, Blog.crops.keys.map, include_blank:'選択してください' %>
+      <%= f.search_field :variety_cont, placeholder: '品種' %>
+    </p>
+    <p><%= f.label :content %>
+      <%= f.search_field :content_cont, placeholder: '日記帳のキーワード検索'%>
+    </p>
+    <%= f.submit "検索" %>
+    <%= button_tag 'リセット', type: 'reset', id: 'reset_button' %>
+  </form>
+<% end %>
