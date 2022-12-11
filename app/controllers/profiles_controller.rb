@@ -10,7 +10,6 @@ class ProfilesController < ApplicationController
     if current_user == @user
       @profile = @user.profile
       @profile.drones.build
-      binding.pry
     else
       redirect_to profile_path(current_user), notice:'他のユーザーは編集できません！'
     end
