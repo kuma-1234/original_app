@@ -21,6 +21,7 @@
   <p>使用した機体 : 
     <% @blog.drones.each do |drone| %>
       <a>■</a><%= drone.drone_name %>
+      <% binding.pry %>
     <% end %> 
   </p>
 

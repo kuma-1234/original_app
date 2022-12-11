@@ -17,12 +17,19 @@
     <%= f.select :prefecture, Profile.prefectures.keys, {} %>
   </div>
 
-  <div class="parents">
-    <%= f.fields_for :drones do |d| %>
-      <%= render 'drone_fields', f: d %>
-    <% end %>
-      <div class="links">
-        <%= link_to_add_association "機体を追加", f, :drones %>
+  <div id="detail-association-insertion-point">
+    <div class="mx-auto">
+      <%= f.fields_for :drones do |d| %>
+        <%= render 'drone_fields', f: d %>
+      <% end %>
+    </div>
+
+      <div class="col-10 mx-auto mt-2">
+        <%= link_to_add_association "機体を追加", f, :drones,
+          data: { 
+            association_insertion_node: '#detail-association-insertion-point',
+            association_insertion_method: 'before' } 
+        %>
       </div>
   </div>
 
