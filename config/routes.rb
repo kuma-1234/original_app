@@ -24,5 +24,8 @@ Rails.application.routes.draw do
     end
   end
   resources :favorites, only:[:index]
-  mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  #letter_opener
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end
