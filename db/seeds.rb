@@ -1,33 +1,33 @@
 users = [
   User.create(
-    name: "高木", 
+    name: "安室", 
     email: "abc@example.com", 
     password: "pas123456",
-    # icon: File.open("./app/assets/images/")
+    icon: File.open("./app/assets/images/animalface_lion.png")
   ),
   User.create(
-    name: "安室", 
+    name: "阿笠", 
     email: "def@example.com",
     password: "pas123456",
-    # icon:
+    icon: File.open("./app/assets/images/animalface_araiguma.png")
   ),
   User.create(
-    name: "服部", 
+    name: "高木", 
     email: "ghi@example.com", 
     password: "pas123456",
-    # icon:
+    icon: File.open("./app/assets/images/animalface_kangaroo.png")
   ),
   User.create(
     name: "江戸川", 
     email: "jkl@example.com", 
     password: "pas123456",
-    # icon:
+    icon: File.open("./app/assets/images/animalface_kuma.png")
   ),
   User.create(
     name: "灰原", 
     email: "mno@example.com", 
     password: "pas123456",
-    # icon:
+    icon: File.open("./app/assets/images/animal_arupaka.png")
   )
 ]
 
@@ -51,13 +51,13 @@ Drone.create!([
 User.find(1).profile.update!(
   prefecture: '秋田県',
   main_crop:'米',
-  self_introduce: 'はじめまして！秋田で農業をやっている高木です。ドローン初心者です。宜しくお願いします。',
+  self_introduce: 'はじめまして！秋田で農業をやっている安室です。ドローン初心者です。宜しくお願いします。',
 )
 
 User.find(2).profile.update!(
   prefecture: '北海道',
   main_crop: 'じゃがいも・玉ねぎ・とうもろこし・米',
-  self_introduce: '北海道でじゃがいもを主に作っている安室です！T30を使用して大規模圃場で作業しています！よろしくお願いします。'
+  self_introduce: '北海道でじゃがいもを主に作っている阿笠です！T30を使用して大規模圃場で作業しています！よろしくお願いします。'
 )
 
 User.find(3).profile.update!(
