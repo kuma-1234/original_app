@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
 
   def index
-    @profile_q = Profile.ransack(params[:q])
+    @profile_q = Profile.includes(:user, :drones).ransack(params[:q])
     @profiles = @profile_q.result(distinct: true).order("created_at desc")
   end
 
