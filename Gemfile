@@ -44,6 +44,7 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'spring'
   gem 'letter_opener_web'
+  gem 'bullet'
 end
 
 group :test do

@@ -5,7 +5,7 @@
 <% @profiles.each do |profile| %>
   <p>
     <% if profile.user.icon.present? %>
-      <%= link_to image_tag(blog.user.icon.url, size: '50x50'), profile_path(profile) %>
+      <%= link_to image_tag(profile.user.icon.url, size: '50x50'), profile_path(profile) %>
     <% else %>
       <%= link_to image_tag('guest_user.png', size: '50x50'), profile_path(profile) %>
     <% end %>

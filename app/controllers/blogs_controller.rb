@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
 
   def index
-    @q = Blog.status_public.ransack(params[:q])
+    @q = Blog.status_public.includes(:user, :match_drones, :drones).ransack(params[:q])
     @blogs = @q.result(distinct: true).order("created_at desc")
     @q = Blog.ransack
   end
@@ -57,13 +57,13 @@ class BlogsController < ApplicationController
   end
 
   def yourself_blog
-    @search = Blog.where(user_id: current_user.id).ransack(params[:q])
+    @search = Blog.where(user_id: current_user.id).includes(:user, :match_drones, :drones).ransack(params[:q])
     @blogs = @search.result(distinct: true).order("created_at desc")
     @search = Blog.where(user_id: current_user.id).ransack
   end
 
   def other_blog
-    @blogs = Blog.status_public.where(user_id: params[:id]).order("created_at desc")
+    @blogs = Blog.status_public.where(user_id: params[:id]).includes(:user, :match_drones, :drones).order("created_at desc")
     @blog = @blogs.find_by(user_id: params[:id])
   end
 
