@@ -1,7 +1,14 @@
 <div class="nested-fields">
-  <div class="form-group">
-    <%= f.label :drone_name %>
-    <%= f.text_field :drone_name, placeholder: "MG-1 / 飛助 ect..."  %><br>
-    <%= link_to_remove_association "削除", f %>
+  <div class="row">
+    <div class="col">
+      <%= f.label :drone_name %>
+    </div>
+    <div class="col-xs-4">
+      <%= f.text_field :drone_name, placeholder: "MG-1 / 飛助 ect...", class:"form-control", id:"ex3" %>
+    </div>
+    <div class="col"></div>
+    <div class="col delete_drone">
+      <%= link_to_remove_association "削除", f ,class:"btn btn-dark w-100" %>
+    </div>
   </div>
 </div>

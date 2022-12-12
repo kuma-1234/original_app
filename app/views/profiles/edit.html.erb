@@ -12,38 +12,58 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :prefecture %><br />
-    <%= f.select :prefecture, Profile.prefectures.keys, {} %>
-  </div>
+  <div class="edit_container">
+    <div class="row">
+      <div class="col">
+        <%= f.label :prefecture %>
+      </div>
+      <div class="col">
+        <%= f.select :prefecture, Profile.prefectures.keys, {}, class:"form-select" %>
+      </div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+    <br>
 
   <div id="detail-association-insertion-point">
     <div class="mx-auto">
-      <%= f.fields_for :drones do |d| %>
-        <%= render 'drone_fields', f: d %>
-      <% end %>
-    </div>
+        <%= f.fields_for :drones do |d| %>
+          <%= render 'drone_fields', f: d %>
+        <% end %>
 
-      <div class="col-10 mx-auto mt-2">
+      <div class="col add_drone">
         <%= link_to_add_association "機体を追加", f, :drones,
+          class:"btn btn-primary w-100",
           data: { 
             association_insertion_node: '#detail-association-insertion-point',
             association_insertion_method: 'before' } 
         %>
       </div>
+    </div>
+  </div>
+  <br>
+  
+  <div class="row">
+    <div class="col">
+      <%= f.label :main_crop %>
+    </div>
+    <div class="col-xs-4">
+      <%= f.text_field :main_crop, placeholder: "米/大豆/玉ねぎ etc...", class:"form-control", id:"ex3" %>
+    </div>
+    <div class="col"></div>
+    <div class="col"></div>
   </div>
 
-  <div class="field">
-    <%= f.label :main_crop %>
-    <%= f.text_field :main_crop, placeholder: "米/大豆/玉ねぎ etc..." %>
-  </div>
 
-
-  <div class="field">
+  <div class="row">
+    <div class="col">
     <%= f.label :self_introduce %>
-    <%= f.text_area :self_introduce, 
+    </div>
+  </div class="text_form">
+    <%= f.text_area :self_introduce, class:"form-control", id:"self_intro",
         placeholder: "◯◯県で農業をしている太郎といいます！主に米を生産していて防除にドローンを使用しています。防除だけでなく色々な使い方をしたい〜。" %>
   </div>
-
-  <%= f.submit "プロフィール設定を更新" %>
+  <div class="profile_update">
+    <%= f.submit "プロフィール設定を更新", class:"btn btn-outline-dark w-50" %>
+  </div>
 <% end %>
