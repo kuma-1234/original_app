@@ -18,7 +18,7 @@
         <%= f.label :prefecture %>
       </div>
       <div class="col">
-        <%= f.select :prefecture, Profile.prefectures.keys, {}, class:"form-select" %>
+        <%= f.select :prefecture, Profile.prefectures.keys, {}, class:"form-control" %>
       </div>
       <div class="col"></div>
       <div class="col"></div>
@@ -47,8 +47,8 @@
     <div class="col">
       <%= f.label :main_crop %>
     </div>
-    <div class="col-xs-4">
-      <%= f.text_field :main_crop, placeholder: "米/大豆/玉ねぎ etc...", class:"form-control", id:"ex3" %>
+    <div class="col">
+      <%= f.text_field :main_crop, placeholder: "米/大豆/玉ねぎ etc...", class:"form-control" %>
     </div>
     <div class="col"></div>
     <div class="col"></div>
