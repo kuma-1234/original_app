@@ -70,6 +70,7 @@
     </div>
   </div>
 </div>
+<br>
 
 <div class="bottun_list">
   <div class="row">
@@ -85,7 +86,7 @@
       <% if current_user.id == @user.id %>
         <p><%= link_to '自分の投稿一覧', yourself_blog_blogs_path, class: "btn btn-outline-primary" %></p>
         <br>
-        <p><%= link_to 'お気に入り一覧', favorites_path, class:"btn btn-outline-warning" %></p>
+        <p><%= link_to 'お気に入り一覧', favorites_path, class:"btn btn-outline-dark" %></p>
       <% else %>
         <%= link_to "#{@profile.user.name}さんの投稿一覧", other_blog_blog_path(@profile.user), class:"btn btn-outline-primary" %>
       <% end %>

@@ -25,12 +25,12 @@
     </div>
     <br>
 
-  <div id="detail-association-insertion-point">
+  <div class="conteiner_drone">
     <div class="mx-auto">
         <%= f.fields_for :drones do |d| %>
           <%= render 'drone_fields', f: d %>
         <% end %>
-
+    <div id="detail-association-insertion-point"></div>
       <div class="col add_drone">
         <%= link_to_add_association "機体を追加", f, :drones,
           class:"btn btn-primary w-100",
