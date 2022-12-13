@@ -1,7 +1,7 @@
 class FavoritesController < ApplicationController
 
   def index
-    @favorites = current_user.favorites.order(created_at: :desc)
+    @favorites = Favorite.all.includes(:blog).where(user_id: current_user.id).order(created_at: :desc)
   end
 
   def create

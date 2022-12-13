@@ -14,6 +14,14 @@
  *= require_self
  */
 
+
+.rounded-circle{
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
 // sign_up.sign_in
 h2{
   text-align: center;

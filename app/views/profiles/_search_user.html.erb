@@ -7,7 +7,7 @@
         <%= f.label :prefecture %>
       </div>
       <div class="col">
-        <%= f.select :prefecture_eq, Profile.prefectures.keys.map, include_blank:'選択してください' %>
+        <%= f.select :prefecture_eq, Profile.prefectures.keys.map, include_blank:'選択してください', class:"form-control" %>
       </div>
       <div class="col"></div>
     </div>
@@ -17,7 +17,7 @@
         <%= f.label :main_crop %>
       </div>
       <div class="col">
-        <%= f.search_field :main_crop_cont, placeholder: '生産作物で検索'%>
+        <%= f.search_field :main_crop_cont, placeholder: '生産作物で検索', class:"form-control"%>
       </div>
       <div class="col"></div>
     </div>
@@ -27,7 +27,7 @@
         <%= f.label :drone_name %>
       </div>
       <div class="col">
-        <%= f.search_field :drones_drone_name_cont, placeholder: '機体名' %>
+        <%= f.search_field :drones_drone_name_cont, placeholder: '機体名で検索', class:"form-control" %>
       </div>
       <div class="col"></div>
     </div>

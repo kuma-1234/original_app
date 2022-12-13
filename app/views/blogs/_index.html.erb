@@ -1,50 +1,80 @@
 <% @blogs.each do |blog| %>
-  <p>
-  <% if blog.user.icon.present? %>
-    <%= link_to image_tag(blog.user.icon.url, size: '50x50'), profile_path(blog.user_id) %>
-  <% else %>
-    <%= link_to image_tag('guest_user.png', size: '50x50'), profile_path(blog.user_id) %>
-  <% end %>
-  <%= blog.user.name %>
-  </p>
+  <div class="all_blog_content">
+    <div class="card" style="width: 30rem;">
+      <div class="icon_user">
+        <% if blog.user.icon.present? %>
+          <%= link_to image_tag(blog.user.icon.url, size: '60x60'), profile_path(blog.user_id), class:"rounded-circle" %>
+        <% else %>
+          <%= link_to image_tag('guest_user.png', size: '60x60'), profile_path(blog.user_id) %>
+        <% end %>
+        <a><%= blog.user.name %></a>
+        <% if blog.status_private? %>
+          <a id="private_blog">【非公開中】</a>
+        <% end %>
+      </div>
 
-  <p>
-    <% if blog.picture.present? %>
-      <%= image_tag blog.picture.to_s, size:'300x200' %>
-    <% else %>
-      <%= image_tag 'No image.png'%>
-    <% end %>
-  </p>
-
-  <p>作業実施日 : <%= blog.work_date %></p>
-
-  <p>使用した機体 : 
-    <% blog.drones.each do |drone| %>
-      <a>■</a><%= drone.drone_name %>
-    <% end %> 
-  </p>
-
-  <p>剤型 : <%= blog.pesticide_type %></p>
-
-  <p>散布農薬名 : <%= blog.pesticide_name %></p>
-
-  <p>散布対象作物 : <%= blog.crop %></p>
-
-  <p>品種名 : <%= blog.variety %></p>
-  
-
-  <p>日記帳</p>
-  <%= truncate(blog.content, length: 30) %>
-
-  <div id="favorite_blog_<%= blog.id %>">
-    <%= render 'favorites/favorite',  blog: blog %>
+      <% if blog.picture.present? %>
+        <%= image_tag blog.picture.to_s, class:"card-img-top" %>
+      <% else %>
+        <%= image_tag 'No image.png', class:"card-img-top" %>
+      <% end %>
+    
+      <div class="card-body">
+        <div class="container">
+          <div class="row justify-content-start">
+            <div class="col-4"><label>作業実施日</label></div>
+            <div class="col-4"><%= blog.work_date %></div>
+          </div>
+          <div class="row justify-content-start">
+            <div class="col-4"><label>使用機体</label></div>
+            <div class="col-4">
+              <% blog.drones.each do |drone| %>
+                <a>■</a><%= drone.drone_name %>
+              <% end %> 
+            </div>
+          </div>
+        <div class="row justify-content-start">
+          <div class="col-4"><label>剤型</label></div>
+          <div class="col-4"><%= blog.pesticide_type %></div>
+        </div>
+        <div class="row justify-content-start">
+          <div class="col-4"><label>散布農薬名</label></div>
+          <div class="col-4"><%= blog.pesticide_name %></div>
+        </div>
+        <div class="row justify-content-start">
+          <div class="col-4"><label>散布作物</label></div>
+          <div class="col-4"><%= blog.crop %></div>
+        </div>
+        <div class="row justify-content-start">
+          <div class="col-4"><label>品種名</label></div>
+          <div class="col-4"><%= blog.variety %></div>
+        </div>
+        <div class="row justify-content-start">
+          <div class="col-4"><label>日記帳</label></div>
+        </div>
+        <div class="row justify-content-start">
+          <div><%= truncate(blog.content, length: 50) %></div>
+        </div>
+        <br>
+        <div class="row justify-content-start">
+          <div class="col-4">
+            <div id="favorite_blog_<%= blog.id %>">
+              <%= render 'favorites/favorite',  blog: blog %>
+            </div>
+          </div>
+          <div class="col"><%= link_to '詳細', blog_path(blog), class:"btn btn-outline-dark" %></div>
+          <div class="col">
+            <% if current_user.id == blog.user_id %>
+              <%= link_to '編集', edit_blog_path(blog), class:"btn btn-outline-dark" %>
+            <% end %>
+          </div>
+          <div class="col">
+            <% if current_user.id == blog.user_id %>
+              <%= link_to '削除', blog_path(blog), method: :delete, data:{confirm:'本当に削除しても良いですか？'}, class:"btn btn-outline-danger" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  
-  <p>
-    <%= link_to '詳細', blog_path(blog) %>
-    <% if current_user.id == blog.user_id %>
-      <%= link_to '編集', edit_blog_path(blog) %>
-      <%= link_to '削除', blog_path(blog), method: :delete, data:{confirm:'本当に削除しても良いですか？'} %>
-    <% end %>
-  </p>
 <% end %>

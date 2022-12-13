@@ -2,7 +2,7 @@
 <%= form_with(model: [blog, comment], local: false) do |form| %>
   <% if comment.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+    <h2><%= comment.errors.count %>件のエラーがあります。</h2>
       <ul>
       <% comment.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,12 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :talk %>
-    <%= form.text_area :talk %>
+  <div class="comment_field">
+    <%= form.label :talk, class:"form-label" %>
+    <%= form.text_area :talk, class:"form-control"  %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="comment_actions">
+    <%= form.submit "コメント投稿", class:"btn btn-outline-dark w-100" %>
   </div>
 <% end %>

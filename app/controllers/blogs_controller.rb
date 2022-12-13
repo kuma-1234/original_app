@@ -20,8 +20,8 @@ class BlogsController < ApplicationController
   end
 
   def show
-    @blog = Blog.find(params[:id])
-    @comments = @blog.comments
+    @blog = Blog.includes(:user, :drones).find(params[:id])
+    @comments = @blog.comments.includes(:user, :drones)
     @comment = @blog.comments.build
     @favorite = current_user.favorites.find_by(blog_id: @blog.id)
 
