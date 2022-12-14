@@ -2,7 +2,7 @@
 
 <div class="show_icon">
   <% if @blog.user.icon.present? %>
-      <%= image_tag @blog.user.icon.url, size:'60x60'  %>
+      <%= image_tag @blog.user.icon.url, class: 'rounded-circle mr15', width: '60', height: '60'  %>
   <% else %>
     <%= image_tag 'guest_user.png', size:'60x60' %>
   <% end %>

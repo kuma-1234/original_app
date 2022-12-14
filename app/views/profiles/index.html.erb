@@ -8,9 +8,9 @@
     <div class="row">
       <div class="col">
         <% if profile.user.icon.present? %>
-          <%= link_to image_tag(profile.user.icon.url, size: '80x80'), profile_path(profile) %>
+          <%= link_to image_tag(profile.user.icon.url, class: 'rounded-circle mr15', width: '60', height: '60'), profile_path(profile) %>
         <% else %>
-          <%= link_to image_tag('guest_user.png', size: '80x80'), profile_path(profile) %>
+          <%= link_to image_tag('guest_user.png', size: '60x60'), profile_path(profile) %>
         <% end %>
         <p id="name"> [ <%= profile.user.name %> ] </p>
       </div>
@@ -69,6 +69,3 @@
     </div>
   </div>
 <% end %>
-
-<br>
-<%= link_to 'みんなの投稿', blogs_path %>

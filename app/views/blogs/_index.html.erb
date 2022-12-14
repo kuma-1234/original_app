@@ -3,9 +3,9 @@
     <div class="card" style="width: 30rem;">
       <div class="icon_user">
         <% if blog.user.icon.present? %>
-          <%= link_to image_tag(blog.user.icon.url, size: '60x60'), profile_path(blog.user_id) %>
+          <%= link_to image_tag(blog.user.icon.url, class: 'rounded-circle mr15', width: '60', height: '60'), profile_path(blog.user_id) %>
         <% else %>
-          <%= link_to image_tag('guest_user.png', size: '60x60'), profile_path(blog.user_id) %>
+          <%= link_to image_tag('guest_user.png', class: 'rounded-circle mr15', width: '60', height: '60'), profile_path(blog.user_id) %>
         <% end %>
         <a><%= blog.user.name %></a>
         <% if blog.status_private? %>

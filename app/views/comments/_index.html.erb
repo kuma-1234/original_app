@@ -4,7 +4,7 @@
       <li>
         <div class="comment_content">
           <% if comment.user.icon.present? %>
-            <%= image_tag comment.user.icon.url, width: '30', height: '30' %>
+            <%= image_tag comment.user.icon.url, class: 'rounded-circle mr15', width: '30', height: '30' %>
           <% else %>
             <%= image_tag 'guest_user.png', width: '30', height: '30' %>
           <% end %>
