@@ -67,13 +67,20 @@
   margin-left: 2rem;
 }
 
+.show_icon a{
+  font-weight: bold;
+  color: rgb(53, 53, 53);
+}
+
 .show_container{
   height:100%;
-  width:100%;
+  width:90%;
   display: grid;
   align-content: center;
   justify-items: center;
   margin-bottom: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 .show_container label{
@@ -86,7 +93,7 @@
 }
 
 .show_container .row{
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 #comments_area{

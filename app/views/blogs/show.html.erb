@@ -2,19 +2,19 @@
 
 <div class="show_icon">
   <% if @blog.user.icon.present? %>
-      <%= image_tag @blog.user.icon.url, size:'50x50'  %>
+      <%= image_tag @blog.user.icon.url, size:'60x60'  %>
   <% else %>
-    <%= image_tag 'guest_user.png', size:'50x50' %>
+    <%= image_tag 'guest_user.png', size:'60x60' %>
   <% end %>
-  <%= @blog.user.name %>
+  <a><%= @blog.user.name %>
 </div>
 
 <div class="show_container">
-  <div class="show_picture">
+  <div class="card" style="width: 30rem;">
     <% if @blog.picture.present? %>
-      <%= image_tag @blog.picture.to_s, size:'600x400' %>
+      <%= image_tag @blog.picture.to_s, width:"60%", height:"40%", class:"card-img-top" %>
     <% else %>
-      <%= image_tag 'No image.png'%>
+      <%= image_tag 'No image.png', class:"card-img-top"%>
     <% end %>
   </div>
 
