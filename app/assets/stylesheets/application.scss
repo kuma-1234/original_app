@@ -14,13 +14,42 @@
  *= require_self
  */
 
-
-.rounded-circle{
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
+.container-fluid a{
+  color: #fcf8e8;
+  text-decoration: none;
 }
+
+main{
+  width: 100%; /* コンテンツの横幅を指定する */
+  overflow: auto; /* コンテンツの表示を自動に設定（スクロール） */
+  margin-top: 80px;
+}
+
+header{
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+}
+
+#back {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+
+footer{
+  background-color: #ecb390;
+  margin-bottom: 0;
+  margin-top: 50px;
+  text-align: center;
+  height: 60px;
+  padding-top: 15px;
+}
+
 
 // sign_up.sign_in
 h2{

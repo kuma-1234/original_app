@@ -3,7 +3,7 @@
     <div class="card" style="width: 30rem;">
       <div class="icon_user">
         <% if blog.user.icon.present? %>
-          <%= link_to image_tag(blog.user.icon.url, size: '60x60'), profile_path(blog.user_id), class:"rounded-circle" %>
+          <%= link_to image_tag(blog.user.icon.url, size: '60x60'), profile_path(blog.user_id) %>
         <% else %>
           <%= link_to image_tag('guest_user.png', size: '60x60'), profile_path(blog.user_id) %>
         <% end %>
