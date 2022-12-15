@@ -9,6 +9,7 @@ ja:
       favorite: "お気に入り"
       comment: "コメント投稿"
       match_drone: "ドローンのマッチング"
+      home: ホーム
     attributes: 
       user:
         name: "ユーザー名"
