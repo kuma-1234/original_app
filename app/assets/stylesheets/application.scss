@@ -1,0 +1,88 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+.container-fluid a{
+  color: #fcf8e8;
+  text-decoration: none;
+}
+
+main{
+  width: 100%; /* コンテンツの横幅を指定する */
+  overflow: auto; /* コンテンツの表示を自動に設定（スクロール） */
+  margin-top: 80px;
+}
+
+header{
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+}
+
+// #back {
+//   position: fixed;
+//   right: 20px;
+//   bottom: 20px;
+// }
+
+.arrow{
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+
+footer{
+  background-color: #ecb390;
+  margin-bottom: 0;
+  margin-top: 50px;
+  text-align: center;
+  height: 60px;
+  padding-top: 15px;
+}
+
+
+// sign_up.sign_in
+h2{
+  text-align: center;
+  margin-top: 3rem;
+  border-bottom: solid 1px rgb(53, 53, 53) ;
+  margin: 0 25%;
+  margin-top: 2rem;
+  color: rgb(53, 53, 53);
+  font-weight: bold;
+  padding: 1rem 0;
+}
+
+.login_form{
+  margin: 2rem 20%;
+  border: solid 1px #1d1b27;
+  border-radius: 10px;
+  padding: 3rem;
+}
+
+.login_form label{
+  padding-top: 1rem;
+  font-weight: bold;
+}
+
+.login_form h4{
+  font-weight: bold;
+}

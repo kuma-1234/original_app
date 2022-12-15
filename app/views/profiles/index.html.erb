@@ -1,40 +1,71 @@
-<h1>登録ユーザーの一覧</h1>
-
+<div class="index_user">
+  <h1>登録ユーザーの一覧</h1>
+</div>
 <%= render 'search_user' %>
 
 <% @profiles.each do |profile| %>
-  <p>
-    <% if profile.user.icon.present? %>
-      <%= link_to image_tag(profile.user.icon.url, size: '50x50'), profile_path(profile) %>
-    <% else %>
-      <%= link_to image_tag('guest_user.png', size: '50x50'), profile_path(profile) %>
-    <% end %>
-    <%= profile.user.name %>
-  </p>
+  <div class="container_profile">
+    <div class="row">
+      <div class="col">
+        <% if profile.user.icon.present? %>
+          <%= link_to image_tag(profile.user.icon.url, class: 'rounded-circle mr15', width: '60', height: '60'), profile_path(profile) %>
+        <% else %>
+          <%= link_to image_tag('guest_user.png', size: '60x60'), profile_path(profile) %>
+        <% end %>
+        <p id="name"> [ <%= profile.user.name %> ] </p>
+      </div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
 
-  <label>住居地</label>
-  <%= "-----" if profile.user.profile.prefecture.blank? %>
-  <%= profile.user.profile.prefecture %>
+    <div class="row">
+      <div class="col">
+        <label>住居地</label>
+      </div>
+      <div class="col">
+        <%= "-----" if profile.user.profile.prefecture.blank? %>
+        <%= profile.user.profile.prefecture %>
+      </div>
+      <div class="col"></div>
+    </div>
 
   <br>
-
-  <label>所有ドローン</label>
-  <% profile.drones.each do |drone| %>
-    <%= drone.drone_name %>
-  <% end %>
+    <div class="row">
+      <div class="col">
+        <label>所有ドローン</label>
+      </div>
+      <div class="col">
+        <% profile.drones.each do |drone| %>
+          <%= drone.drone_name %>
+        <% end %>
+      </div>
+      <div class="col"></div>
+    </div>
 
   <br>
+    
+    <div class="row">
+      <div class="col">
+        <label>主な生産作物</label>
+      </div>
+      <div class="col">
+        <%= "-----" if profile.main_crop.blank? %>
+        <%= profile.main_crop %>
+      </div>
+      <div class="col"></div>
+    </div>
 
-  <label>主な生産作物</label>
-  <%= "-----" if profile.main_crop.blank? %>
-  <%= profile.main_crop %>
-
-  <br>
-
-  <label>自己紹介</label>
-  <%= "-----" if profile.self_introduce.blank? %>
-  <%= profile.self_introduce %>
+    <br>
+    <div class="row">
+      <div class="col">
+        <label>自己紹介</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= "-----" if profile.self_introduce.blank? %>
+        <%= profile.self_introduce %>
+      </div>
+    </div>
+  </div>
 <% end %>
-
-<br>
-<%= link_to 'みんなの投稿', blogs_path %>

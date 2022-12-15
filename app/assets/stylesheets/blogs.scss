@@ -1,3 +1,102 @@
 // Place all the styles related to the blogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+// _search
+.search_blog{
+  background-color: #fcf8e8;
+  padding: 0.5em 1em;
+  margin: 2rem;
+  border: solid 1px #1d1b27;
+}
+
+//_index
+.all_blog_content{
+  height:100%;
+  width:100%;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  margin-bottom: 2rem;
+}
+
+.icon_user{
+  margin: 0.5rem 0;
+}
+
+.icon_user a{
+  padding-left: 1rem;
+}
+
+.card-body label{
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: rgb(53, 53, 53);
+}
+
+#private_blog{
+  color: #ecb390;
+}
+
+// _form
+.edit_blog{
+  margin: 1rem 20%;
+  padding: 2rem;
+  background-color: #fcf8e8;
+}
+
+.edit_blog .field{
+  margin-bottom: 0.8rem;
+}
+
+.edit_blog label{
+  font-weight: bold;
+  color: rgb(53, 53, 53);
+}
+
+#drones_name{
+  margin-left: 1rem;
+}
+
+#diary{
+  height: 200px;
+}
+
+// show
+.show_icon{
+  margin-left: 2rem;
+}
+
+.show_icon a{
+  font-weight: bold;
+  color: rgb(53, 53, 53);
+}
+
+.show_container{
+  height:100%;
+  width:90%;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.show_container label{
+  font-weight: bold;
+  color: rgb(53, 53, 53);
+}
+
+.show_container .content{
+  margin-bottom: 1rem;
+}
+
+.show_container .row{
+  margin-bottom: 0.5rem;
+}
+
+#comments_area{
+  background-color: #fcf8e8;
+  padding: 1.5rem;
+}

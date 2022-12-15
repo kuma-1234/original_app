@@ -1,107 +1,159 @@
 <h1>詳細</h1>
 
-<% if @blog.user.icon.present? %>
-    <%= image_tag @blog.user.icon.url, class: 'rounded-circle mr15', width: '40', height: '40' %>
-<% else %>
-  <%= image_tag 'guest_user.png', class: 'rounded-circle mr15', width: '40', height: '40' %>
-<% end %>
-  
-<%= @blog.user.name %>
+<div class="show_icon">
+  <% if @blog.user.icon.present? %>
+      <%= image_tag @blog.user.icon.url, class: 'rounded-circle mr15', width: '60', height: '60'  %>
+  <% else %>
+    <%= image_tag 'guest_user.png', size:'60x60' %>
+  <% end %>
+  <a><%= @blog.user.name %>
+</div>
 
-<p>
+<div class="show_container">
+  <div class="card" style="width: 30rem;">
     <% if @blog.picture.present? %>
-      <%= image_tag @blog.picture.to_s, width: '50%', height: '35%' %>
+      <%= image_tag @blog.picture.to_s, width:"60%", height:"40%", class:"card-img-top" %>
     <% else %>
-      <%= image_tag 'No image.png'%>
+      <%= image_tag 'No image.png', class:"card-img-top"%>
     <% end %>
-  </p>
-
-  <p>作業実施日 : <%= @blog.work_date %></p>
-
-  <p>使用した機体 : 
-    <% @blog.drones.each do |drone| %>
-      <a>■</a><%= drone.drone_name %>
-      <% binding.pry %>
-    <% end %> 
-  </p>
-
-  <p>剤型 : <%= @blog.pesticide_type %></p>
-
-  <p>散布農薬名 : <%= @blog.pesticide_name %></p>
-
-  <p>飛行速度 : 
-    <a> 時速
-      <% if @blog.flight_speed.present? %>
-        <%= @blog.flight_speed %>
-      <% else %>
-        <%= '----' %>
-      <% end %>
-      km
-    </a>
-  </p>
-
-  <p>インペラ回転数 : 
-    <a>
-      <% if @blog.rpm.present? %>
-        <%= @blog.rpm %>
-      <% else %>
-        <%= ' ---- ' %>
-      <% end %>
-      回転
-    </a>
-  </p>
-
-  <p>シャッター開度 : 
-    <a>
-      <% if @blog.shutter_opening.present? %>
-        <%= @blog.shutter_opening %>
-      <% else %>
-        <%= '----' %>
-      <% end %>
-      %
-    </a>
-  </p>
-
-  <p>散布対象作物 : <%= @blog.crop %></p>
-
-  <p>品種名 : <%= @blog.variety %></p>
-  
-
-  <p>散布面積 : 
-    <a>
-      <% if @blog.spray_area.present? %>
-        <%= @blog.spray_area %>
-      <% else %>
-        <%= '----' %>
-      <% end %>
-      ha
-    </a>
-  </p>
-
-  <p>日記帳</p>
-  <%= @blog.content %>
-
-  <div id="favorite_<%=@blog.id %>">
-    <%= render 'favorites/favorite', blog: @blog %>
   </div>
 
-  <p>コメント投稿</p>
+  <div class="container">
+    <div class="row">
+      <div class="col"><label>作業実施日</label></div>
+      <div class="col"><%= @blog.work_date %></div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"><label>使用した機体</label></div> 
+      <div class="col">
+        <% @blog.drones.each do |drone| %>
+          <a>■</a><%= drone.drone_name %>
+        <% end %>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"><label>剤型</label></div>
+      <div class="col"><%= @blog.pesticide_type %></div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"><label>散布農薬名</label></div>
+      <div class="col"><%= @blog.pesticide_name %></div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"><label>【機体設定情報】</label>
+      <div class="col">
+        <% if @blog.flight_speed.present? %>
+          <%= " " %>
+        <% else %>
+          <%= '  ' %>
+        <% end %>
+        <a> </a>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"><label> ・飛行速度</label></div> 
+      <div class="col">
+        <% if @blog.flight_speed.present? %>
+          <%= @blog.flight_speed %>
+        <% else %>
+          <%= ' ---- ' %>
+        <% end %>
+        <a> km/h</a>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"><label> ・インペラ回転数</label></div> 
+      <div class="col">
+        <% if @blog.rpm.present? %>
+          <%= @blog.rpm %>
+        <% else %>
+          <%= ' ---- ' %>
+        <% end %>
+        <a> 回転</a>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"><label> ・シャッター開度</label></div>
+      <div class="col">
+        <% if @blog.shutter_opening.present? %>
+          <%= @blog.shutter_opening %>
+        <% else %>
+          <%= '----' %>
+        <% end %>
+        <a>%</a>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"><label>散布対象作物</label></div>
+      <div class="col"><%= @blog.crop %></div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"><label>品種名</label></div>
+      <div class="col"><%= @blog.variety %></div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"><label>散布面積</label></div>
+      <div class="col">
+        <% if @blog.spray_area.present? %>
+          <%= @blog.spray_area %>
+        <% else %>
+          <%= '----' %>
+        <% end %>
+        <a>ha</a>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"><label>日記帳</label></div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+    <div class="content">
+      <%= @blog.content %>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div id="favorite_<%=@blog.id %>">
+          <%= render 'favorites/favorite', blog: @blog %>
+        </div>
+      </div>
+    </div>
 
-  <!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
-  <div id="comments_area">
-    <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
-    <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
+    <h5>コメント投稿</h5>
+
+    <!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
+    <div id="comments_area">
+      <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+      <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
+    </div>
+
+    <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+    <%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>
+
+    
+    <div class="row">
+      <div class="col"><%= link_to 'みんなの投稿', blogs_path, class:"btn btn-outline-primary w-100" %></div>
+      <div class="col"><%= link_to 'お気に入り一覧', favorites_path, class:"btn btn-outline-dark w-100" %></div>
+      <div class="col">
+        <% if current_user.id == @blog.user_id %>
+          <%= link_to '編集', edit_blog_path(@blog), class:"btn btn-outline-dark w-100" %>
+        <% end %>
+      </div>
+      <div class="col">
+        <% if current_user.id == @blog.user_id %>
+          <%= link_to '削除', blog_path(@blog), method: :delete, data:{confirm:'本当に削除しても良いですか？'}, class:"btn btn-outline-danger w-100" %>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-  <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
-  <%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>
-
-  
-  <p>
-    <%= link_to 'みんなの投稿', blogs_path %>
-    <%= link_to 'お気に入り一覧', favorites_path %>
-    <% if current_user.id == @blog.user_id %>
-      <%= link_to '編集', edit_blog_path(@blog) %>
-      <%= link_to '削除', blog_path(@blog), method: :delete, data:{confirm:'本当に削除しても良いですか？'} %>
-    <% end %>
-  </p>
+</div>

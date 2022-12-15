@@ -1,56 +1,95 @@
-<% if current_user.id == @user.id %>
-  <h1>マイページ</h1>
-<% else %>
-  <h1><%= @user.name %>さんのページ</h1>
-<% end %>
+<div class="profile_name">
+  <% if current_user.id == @user.id %>
+    <h1>マイページ</h1>
+  <% else %>
+    <h1><%= @user.name %>さんのページ</h1>
+  <% end %>
+</div>
 
-<% if @user.icon.present? %>
-  <%= image_tag @user.icon.url, size: '100x100' %>
-<% else %>
-  <%= image_tag 'guest_user.png', size: '100x100' %>
-<% end %>
-<p><%= @user.name %></p>
+<div class="container_icon">
+  <% if @user.icon.present? %>
+    <%= image_tag @user.icon.url, class: 'rounded-circle mr15', width: '150', height: '150' %>
+  <% else %>
+    <%= image_tag 'guest_user.png', size: '150x150' %>
+  <% end %>
+  <a id="account_button">
+    <% if current_user.id == @user.id %>
+      <%= link_to 'アカウント設定', edit_user_registration_path(current_user), class:"btn btn-outline-secondary" %>
+    <% end %>
+  </a>
+</div>
 
-<% if current_user.id == @user.id %>
-  <%= link_to 'アカウント設定', edit_user_registration_path(current_user) %>
-<% end %>
+<div class="container_myprofile">
+  <div class="row">
+    <div class="col">
+      <label>住居地</label>
+    </div>
+    <div class="col"> 
+      <%= "-----" if @profile.prefecture.blank? %>
+      <%= @profile.prefecture %>
+    </div>
+    <div class="col"></div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col">
+      <label>所有ドローン</label>
+    </div>
+    <div class="col"> 
+      <% @drones.each do |drone| %>
+        <%= "-----" if drone.drone_name.blank? %>
+        <%= drone.drone_name %>
+      <% end %>
+    </div>
+    <div class="col"></div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col">
+      <label>主な生産作物</label>
+    </div>
+    <div class="col">
+      <%= "-----" if @profile.main_crop.blank? %>
+      <%= @profile.main_crop %>
+    </div>
+    <div class="col"></div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col">
+      <label>自己紹介</label>
+    </div>
+    <div class="col"></div>
+    <div class="col"></div>
+  </div>
 
+  <div class="row">
+    <div class="col">
+      <%= "-----" if @profile.self_introduce.blank? %>
+      <%= @profile.self_introduce %>
+    </div>
+  </div>
+</div>
 <br>
 
-<label>住居地</label>
-<%= "-----" if @profile.prefecture.blank? %>
-<%= @profile.prefecture %>
-
-<br>
-
-<label>所有ドローン</label>
-<% @drones.each do |drone| %>
-  <%= "-----" if drone.drone_name.blank? %>
-  <%= drone.drone_name %>
-<% end %>
-
-<br>
-
-<label>主な生産作物</label>
-<%= "-----" if @profile.main_crop.blank? %>
-<%= @profile.main_crop %>
-
-<br>
-
-<label>自己紹介</label>
-<%= "-----" if @profile.self_introduce.blank? %>
-<%= @profile.self_introduce %>
-
-<% if current_user.id == @user.id %>
-<p><%= link_to 'プロフィール設定', edit_profile_path(current_user) %></p>
-<% end %>
-
-
-<p><%= link_to 'みんなの投稿', blogs_path %></p>
-
-<% if current_user.id == @user.id %>
-  <%= link_to '自分の投稿一覧', yourself_blog_blogs_path %>
-  <p><%= link_to 'お気に入り一覧', favorites_path %></p>
-<% else %>
-  <%= link_to "#{@profile.user.name}さんの投稿一覧", other_blog_blog_path(@profile.user) %>
-<% end %>
+<div class="bottun_list">
+  <div class="row">
+    <div class="col">
+      <% if current_user.id == @user.id %>
+        <%= link_to 'プロフィール設定', edit_profile_path(current_user), class:"btn btn-outline-secondary" %>
+      <% end %>
+    </div>
+    <div class="col">
+      <%= link_to 'みんなの投稿', blogs_path, class: "btn btn-outline-primary" %>
+    </div>
+    <div class="col">
+      <% if current_user.id == @user.id %>
+        <p><%= link_to '自分の投稿一覧', yourself_blog_blogs_path, class: "btn btn-outline-primary" %></p>
+        <br>
+        <p><%= link_to 'お気に入り一覧', favorites_path, class:"btn btn-outline-dark" %></p>
+      <% else %>
+        <%= link_to "#{@profile.user.name}さんの投稿一覧", other_blog_blog_path(@profile.user), class:"btn btn-outline-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

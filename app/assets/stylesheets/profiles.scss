@@ -1,3 +1,109 @@
 // Place all the styles related to the profiles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+h1{
+  color: rgb(53, 53, 53);
+  font-weight: bold;
+  margin: 2rem;
+  background-color: #cee5d0;
+  padding: 0.5rem;
+}
+
+// index画面
+.container_profile{
+  margin: 2rem;
+  padding: 0.5em 1em;
+  color: black;/*文字色*/
+  background: #FFF;
+  border: solid 3px #1d1b27;/*線*/
+  border-radius: 10px;/*角の丸み*/
+
+}
+
+#name{
+  font-size: 1.2rem;
+  color: #94b49f;
+  font-weight: bold;
+}
+
+.container_profile label{
+  font-weight: bold;
+  color: rgb(53, 53, 53);
+  border-bottom: solid 2px rgb(53, 53, 53);
+  font-size: 1.1rem;
+}
+
+// search画面
+.container_search{
+  background-color: #fcf8e8;
+  padding: 0.5em 1em;
+  margin: 2rem;
+  border: solid 1px #1d1b27;
+}
+
+.container_search h3{
+  margin: 1rem 0;
+  padding-bottom: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.container_search label{
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: rgb(53, 53, 53);
+}
+
+.buttom_search{
+  text-align: center;
+  margin: 1.2rem;
+}
+
+// show画面
+.container_icon{
+  margin: 2rem;
+}
+
+.container_myprofile{
+  margin: 2rem;
+}
+
+.container_myprofile label{
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: rgb(53, 53, 53);
+}
+
+.bottun_list{
+  margin: 2rem;
+}
+
+// edit画面
+.add_drone{
+  margin-top: 0.5rem;
+}
+
+.nested-fields .col{
+  margin-bottom: 0.5rem;
+}
+
+#self_intro{
+  height: 100px;
+}
+
+.profile_update{
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.edit_container label{
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: rgb(53, 53, 53);
+}
+
+.edit_container{
+  margin: 2rem;
+}
+

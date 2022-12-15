@@ -1,20 +1,20 @@
-<ul>
+<ul style="list-style:none">
   <% blog.comments.each do |comment| %>
     <% if comment.id.present? %>
       <li>
-        <p>
+        <div class="comment_content">
           <% if comment.user.icon.present? %>
             <%= image_tag comment.user.icon.url, class: 'rounded-circle mr15', width: '30', height: '30' %>
           <% else %>
-            <%= image_tag 'guest_user.png', class: 'rounded-circle mr15', width: '30', height: '30' %>
+            <%= image_tag 'guest_user.png', width: '30', height: '30' %>
           <% end %>
-          <%= comment.user.name %> : 
+          <a><%= comment.user.name %> : </a>
           <%= comment.talk %>
-        </p>
+        </div>
         
         <% if current_user.id == comment.user_id %>
         <p><%= link_to "コメント削除", blog_comment_path(comment.blog_id, comment.id), method: :delete, remote: true,
-                                        data: { confirm: "本当に削除しますか?"} %></p>
+                                        data: { confirm: "本当に削除しますか?"}, class:"btn btn-outline-danger w-100" %></p>
         <% end %>
       </li>
     <% end %>

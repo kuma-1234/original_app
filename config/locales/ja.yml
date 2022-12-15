@@ -32,6 +32,7 @@ ja:
         variety: "品種名"
         spray_area: "散布面積"
         status: "公開・非公開"
+        drone_name: "使用した機体"
       comment:
         talk: "コメント投稿文"
       drone:

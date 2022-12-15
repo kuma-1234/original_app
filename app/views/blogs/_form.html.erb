@@ -10,77 +10,79 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :picture %><br />
-    <%= f.file_field :picture %>
-  </div>
+  <div class="edit_blog">
+    <div class="field">
+      <%= f.label :picture, class:"form-label" %>
+      <%= f.file_field :picture, class:"form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :work_date %>
-    <%= f.date_select :work_date %>
-  </div>
+    <div class="field">
+      <%= f.label :work_date, class:"form-label" %>
+      <%= f.date_select :work_date, class:"form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.collection_check_boxes(:drone_ids, Drone.where(profile_id: current_user.id), :id, :drone_name) %>
-  </div>
+    <div class="field">
+      <%= f.label :drone_name, class:"form-label" %>
+      <a id="drones_name"><%= f.collection_check_boxes(:drone_ids, Drone.where(profile_id: current_user.id), :id, :drone_name) %></a>
+    </div>
 
-  <div class="field">
-    <%= f.label :pesticide_type %>
-    <%= f.select :pesticide_type, Blog.pesticide_types.keys, include_blank: '選択してください' %>
-  </div>
+    <div class="field">
+      <%= f.label :pesticide_type, class:"form-label" %>
+      <%= f.select :pesticide_type, Blog.pesticide_types.keys, include_blank: '選択してください' %>
+    </div>
 
-  <div class="field">
-    <%= f.label :pesticide_name %>
-    <%= f.text_field :pesticide_name, placeholder: '◯◯１キロ粒剤' %>
-  </div>
+    <div class="field">
+      <%= f.label :pesticide_name, class:"form-label" %>
+      <%= f.text_field :pesticide_name, placeholder: '◯◯１キロ粒剤', class:"form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :flight_speed %>
-    <a>時速<%= f.text_field :flight_speed, placeholder: '18' %>km</a>
-  </div>
-  
-  <div class="field">
-    <%= f.label :rpm %>
-    <a><%= f.text_field :rpm, placeholder: '1200' %>回転</a>
-  </div>
+    <div class="field">
+      <%= f.label :flight_speed, class:"form-label" %><a>（数字のみご入力ください）</a>
+      <%= f.text_field :flight_speed, placeholder: '時速18km', class:"form-control" %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :rpm, class:"form-label" %><a>（数字のみご入力ください）</a>
+      <%= f.text_field :rpm, placeholder: '1200回転(粒剤使用時のみ入力)', class:"form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :shutter_opening %>
-    <a><%= f.text_field :shutter_opening, placeholder: '18' %>%</a>
-  </div>
+    <div class="field">
+      <%= f.label :shutter_opening, class:"form-label" %><a>（数字のみご入力ください）</a>
+      <%= f.text_field :shutter_opening, placeholder: '18%(粒剤使用時のみ入力)', class:"form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :crop %>
-    <%= f.select :crop, Blog.crops.keys, include_blank: '選択してください' %>
-  </div>
+    <div class="field">
+      <%= f.label :crop, class:"form-label" %>
+      <%= f.select :crop, Blog.crops.keys, include_blank: '選択してください' %>
+    </div>
 
-  <div class="field">
-    <%= f.label :variety %>
-    <%= f.text_field :variety, placeholder: 'コシヒカリ' %>
-  </div>
+    <div class="field">
+      <%= f.label :variety, class:"form-label" %>
+      <%= f.text_field :variety, placeholder: 'コシヒカリ', class:"form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :spray_area %>
-    <a><%= f.text_field :spray_area, placeholder: '0.7' %>ha</a>
-  </div>
+    <div class="field">
+      <%= f.label :spray_area, class:"form-label" %><a>（数字のみご入力ください）</a>
+      <%= f.text_field :spray_area, placeholder: '0.7ha' , class:"form-control"%>
+    </div>
 
-  <div class="field">
-    <%= f.label :content %>
-    <%= f.text_area :content, placeholder: blog_content %>
+    <div class="field">
+      <%= f.label :content, class:"form-label" %>
+      <%= f.text_area :content, placeholder: blog_content, class:"form-control", id:"diary" %>
+    </div>
+    <br>
+    <p>
+    <%= f.label(:public, for: nil, class: 'blog_status_label') do %>
+      <%= f.radio_button :status, :public %>
+      <%= '公開(全てのユーザーに公開されます)' %>
+    <% end %>
+    </p>
+    <p>
+    <%= f.label(:private, for: nil, class: 'blog_status_label') do %>
+      <%= f.radio_button :status, :private %>
+      <%= '非公開(自分にのみ表示されます)' %>
+    <% end %>
+    </p>
+    <%= f.submit "作成", class:"btn btn-outline-dark w-100" %>
   </div>
-  
-  <p>
-  <%= f.label(:public, for: nil, class: 'blog_status_label') do %>
-    <%= f.radio_button :status, :public %>
-    <%= '公開(全てのユーザーに公開されます)' %>
-  <% end %>
-  </p>
-  <p>
-  <%= f.label(:private, for: nil, class: 'blog_status_label') do %>
-    <%= f.radio_button :status, :private %>
-    <%= '非公開(自分にのみ表示されます)' %>
-  <% end %>
-  </p>
-  
-  <%= f.submit "作成" %>
 <% end %>
