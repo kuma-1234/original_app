@@ -6,6 +6,11 @@ class Blog < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user
 
+  validates :pesticide_type, presence: true
+  validates :crop, presence: true
+  validates :spray_area, presence: true
+  validates :content, presence: true
+
   enum pesticide_type: {
     液剤: 1,
     液剤（肥料）: 2,

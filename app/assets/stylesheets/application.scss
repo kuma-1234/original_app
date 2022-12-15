@@ -35,12 +35,6 @@ header{
   box-sizing: border-box;
 }
 
-// #back {
-//   position: fixed;
-//   right: 20px;
-//   bottom: 20px;
-// }
-
 .arrow{
   width: 30px;
   height: 30px;
@@ -56,6 +50,7 @@ footer{
   text-align: center;
   height: 60px;
   padding-top: 15px;
+  font-family: 'キウイ丸', serif;
 }
 
 
@@ -80,9 +75,29 @@ h2{
 
 .login_form label{
   padding-top: 1rem;
+  padding-bottom: 0.5rem;
   font-weight: bold;
 }
 
 .login_form h4{
   font-weight: bold;
+}
+
+.login_form .actions{
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+// error
+#error_explanation{
+  text-align: center;
+}
+
+#error_explanation li{
+list-style:none;
+}
+
+// nav_ber
+.navbar-brand{
+  font-family: 'キウイ丸', serif;
 }

@@ -28,7 +28,7 @@
       <div class="col"><label>使用した機体</label></div> 
       <div class="col">
         <% @blog.drones.each do |drone| %>
-          <a>■</a><%= drone.drone_name %>
+          <span>■</span><%= drone.drone_name %>
         <% end %>
       </div>
       <div class="col"></div>
