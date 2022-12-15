@@ -62,7 +62,7 @@
               <%= render 'favorites/favorite',  blog: blog %>
             </div>
           </div>
-          <div class="col"><%= link_to '詳細', blog_path(blog), class:"btn btn-outline-dark" %></div>
+          <div class="col"><%= link_to '詳細', blog_path(blog), class:"btn btn-outline-dark",  data: {"turbolinks" => false} %></div>
           <div class="col">
             <% if current_user.id == blog.user_id %>
               <%= link_to '編集', edit_blog_path(blog), class:"btn btn-outline-dark" %>
