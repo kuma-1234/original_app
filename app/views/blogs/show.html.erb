@@ -44,19 +44,31 @@
       <div class="col"></div>
     </div>
     <div class="row">
-      <div class="col"><label>飛行速度</label></div>
-      <div class="col"><a>時速</a>
+      <div class="col"><label>【機体設定情報】</label>
+      <div class="col">
         <% if @blog.flight_speed.present? %>
-          <%= @blog.flight_speed %>
+          <%= " " %>
         <% else %>
-          <%= '----' %>
+          <%= '  ' %>
         <% end %>
-        <a>km</a>
+        <a> </a>
       </div>
       <div class="col"></div>
     </div>
     <div class="row">
-      <div class="col"><label>インペラ回転数</label></div> 
+      <div class="col"><label> ・飛行速度</label></div> 
+      <div class="col">
+        <% if @blog.flight_speed.present? %>
+          <%= @blog.flight_speed %>
+        <% else %>
+          <%= ' ---- ' %>
+        <% end %>
+        <a> km/h</a>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"><label> ・インペラ回転数</label></div> 
       <div class="col">
         <% if @blog.rpm.present? %>
           <%= @blog.rpm %>
@@ -68,7 +80,7 @@
       <div class="col"></div>
     </div>
     <div class="row">
-      <div class="col"><label>シャッター開度</label></div>
+      <div class="col"><label> ・シャッター開度</label></div>
       <div class="col">
         <% if @blog.shutter_opening.present? %>
           <%= @blog.shutter_opening %>
