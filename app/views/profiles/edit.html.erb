@@ -3,7 +3,7 @@
 <%= form_with(model: @profile, local: true) do |f|   %>
   <% if @profile.errors.any? %>
     <div id="error_explanation">
-    <h2><%= @profile.errors.count %>件のエラーがあります。</h2>
+    <p><%= @profile.errors.count %>件のエラーがあります。</p>
       <ul>
       <% @profile.errors.full_messages.each do |message| %>
         <li><%= message %></li>
