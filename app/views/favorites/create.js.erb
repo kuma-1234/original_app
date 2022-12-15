@@ -1,4 +1,2 @@
-$(document).on('turbolinks:load', function() {
-  $('#favorite_<%= @blog.id %>').html("<%= j(render "favorites/favorite", blog: @blog ) %>");
-});
+$('#favorite_<%= @blog.id %>').html("<%= j(render "favorites/favorite", blog: @blog ) %>");
 $('#favorite_blog_<%= @blog.id %>').html("<%= j(render "favorites/favorite", blog: @blog ) %>");

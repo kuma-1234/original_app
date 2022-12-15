@@ -35,15 +35,18 @@ header{
   box-sizing: border-box;
 }
 
-#back {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-}
+// #back {
+//   position: fixed;
+//   right: 20px;
+//   bottom: 20px;
+// }
 
 .arrow{
   width: 30px;
   height: 30px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
 }
 
 footer{
