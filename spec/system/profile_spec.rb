@@ -18,13 +18,6 @@ RSpec.feature 'プロフィール管理機能',  type: :system do
     click_button 'ログイン'
   end
 
-  def login_2
-    visit new_user_session_path
-    fill_in 'user[email]', with: 'gues2t@test.com'
-    fill_in 'user[password]', with: 'guest123456'
-    click_button 'ログイン'
-  end
-
   describe 'プロフィールの編集テスト' do
     before do
       login_1
