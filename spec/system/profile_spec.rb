@@ -7,6 +7,9 @@ RSpec.feature 'プロフィール管理機能',  type: :system do
   let!(:user2){ FactoryBot.create(:user2) }
   let!(:profile2){ FactoryBot.build(:profile2, user: user2) }
   let!(:drone2){ FactoryBot.create(:drone2, profile: profile2) }
+  let!(:admin_user){ FactoryBot.create(:admin_user) }
+  let!(:profile3){ FactoryBot.build(:profile3, user: admin_user) }
+  let!(:drone3){ FactoryBot.create(:drone3, profile: profile3) }
 
   def login_1
     visit new_user_session_path
@@ -46,6 +49,51 @@ RSpec.feature 'プロフィール管理機能',  type: :system do
         visit edit_profile_path(user2)
         expect(current_path).to eq profile_path(user)
         expect(page).to have_content '他のユーザーは編集できません！'
+      end
+    end
+  end
+  describe '登録ユーザーの一覧画面機能' do
+    before do
+      login_1
+    end
+    context '登録ユーザー一覧画面に移動した場合' do
+      it '登録しているユーザー全てが確認できる' do
+        visit profiles_path
+        expect(page).to have_content 'guest'
+        expect(page).to have_content 'guest2'
+      end
+    end
+  end
+  describe '登録ユーザーの一覧画面検索機能' do
+    before do
+      login_1
+    end
+    context '機体名で検索した場合' do
+      it 'その機体を所有しているユーザーのみ表示される' do
+        visit profiles_path
+        fill_in 'q[drones_drone_name_cont]', with: 'A'
+        click_on '検索'
+        expect(page).to have_content 'A'
+        expect(page).to have_content 'guest'
+        expect(page).not_to have_content 'admin_user'
+      end
+    end
+    context '作物名で検索した場合' do
+      it 'その作物を生産しているユーザーのみ表示される' do
+        visit profiles_path
+        fill_in 'q[main_crop_cont]', with: 'さとうきび'
+        click_on '検索'
+        expect(page).to have_content 'guest2'
+        expect(page).not_to have_content 'admin_user'
+      end
+    end
+    context '作物名で検索した場合' do
+      it 'その作物を生産しているユーザーのみ表示される' do
+        visit profiles_path
+        select '新潟県', from: 'q[prefecture_eq]'
+        click_on '検索'
+        expect(page).to have_content 'admin_user'
+        expect(page).not_to have_content 'guest2'
       end
     end
   end
