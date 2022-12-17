@@ -14,6 +14,13 @@
  *= require_self
  */
 
+body{
+  min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
+  position: relative;/* ←相対位置 */
+  padding-bottom: 60px; /* ←フッターの高さを指定 */
+  box-sizing: border-box;
+}
+
 .container-fluid a{
   color: #fcf8e8;
   text-decoration: none;
@@ -41,14 +48,15 @@ header{
   position: fixed;
   right: 20px;
   bottom: 20px;
+  z-index: 1;
 }
 
 footer{
   background-color: #ecb390;
-  margin-bottom: 0;
-  margin-top: 50px;
+  position: absolute;/* ←絶対位置 */
+  bottom: 0;
+  width: 100%;
   text-align: center;
-  height: 60px;
   padding-top: 15px;
   font-family: 'キウイ丸', serif;
 }
