@@ -40,7 +40,13 @@
     </div>
     <div class="row">
       <div class="col"><label>散布農薬名</label></div>
-      <div class="col"><%= @blog.pesticide_name %></div>
+      <div class="col">
+        <% if @blog.pesticide_name.present? %>
+          <%= @blog.pesticide_name %>
+        <% else %>
+          <%= ' ---- ' %>
+        <% end %>
+      </div>
       <div class="col"></div>
     </div>
     <div class="row">
@@ -98,7 +104,13 @@
     </div>
     <div class="row">
       <div class="col"><label>品種名</label></div>
-      <div class="col"><%= @blog.variety %></div>
+      <div class="col">
+        <% if @blog.variety.present? %>
+          <%= @blog.variety %>
+        <% else %>
+          <%= '----' %>
+        <% end %>
+      </div>
       <div class="col"></div>
     </div>
     <div class="row">
