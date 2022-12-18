@@ -16,7 +16,7 @@
       <% if blog.picture.present? %>
         <%= image_tag blog.picture.to_s, class:"card-img-top" %>
       <% else %>
-        <%= image_tag 'No image.png', class:"card-img-top" %>
+        <%= image_tag 'No image.jpg', class:"card-img-top" %>
       <% end %>
     
       <div class="card-body">
@@ -47,7 +47,13 @@
         </div>
         <div class="row justify-content-start">
           <div class="col-4"><label>品種名</label></div>
-          <div class="col-4"><%= blog.variety %></div>
+          <div class="col-4">
+            <% if blog.variety.present? %>
+              <%= blog.variety %>
+            <% else %>
+              <%= ' ---- ' %>
+            <% end %>
+          </div>
         </div>
         <div class="row justify-content-start">
           <div class="col-4"><label>日記帳</label></div>
