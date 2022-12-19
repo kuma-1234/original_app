@@ -154,16 +154,16 @@
 
     
     <div class="row">
-      <div class="col"><%= link_to 'みんなの投稿', blogs_path, class:"btn btn-outline-primary w-100" %></div>
-      <div class="col"><%= link_to 'お気に入り一覧', favorites_path, class:"btn btn-outline-dark w-100" %></div>
+      <div class="col"><%= link_to ' みんなの投稿', blogs_path, class:"btn btn-outline-primary w-100 bi bi-people-fill" %></div>
+      <div class="col"><%= link_to ' お気に入り一覧', favorites_path, class:"btn btn-outline-dark w-100 bi bi-balloon-heart" %></div>
       <div class="col">
         <% if current_user.id == @blog.user_id %>
-          <%= link_to '編集', edit_blog_path(@blog), class:"btn btn-outline-dark w-100" %>
+          <%= link_to '編集', edit_blog_path(@blog), class:"btn btn-outline-dark w-100 bi bi-pencil-square" %>
         <% end %>
       </div>
       <div class="col">
         <% if current_user.id == @blog.user_id %>
-          <%= link_to '削除', blog_path(@blog), method: :delete, data:{confirm:'本当に削除しても良いですか？'}, class:"btn btn-outline-danger w-100" %>
+          <%= link_to '削除', blog_path(@blog), method: :delete, data:{confirm:'本当に削除しても良いですか？'}, class:"btn btn-outline-danger w-100 bi bi-trash" %>
         <% end %>
       </div>
     </div>

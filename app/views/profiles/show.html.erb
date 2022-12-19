@@ -15,7 +15,7 @@
   <span><%= @user.name %></span>
   <a id="account_button">
     <% if current_user.id == @user.id %>
-      <%= link_to 'アカウント設定', edit_user_registration_path(current_user), class:"btn btn-outline-secondary" %>
+      <%= link_to ' アカウント設定', edit_user_registration_path(current_user), class:"btn btn-outline-secondary bi bi-pencil-square" %>
     <% end %>
   </a>
 </div>
@@ -39,7 +39,7 @@
     <div class="col"> 
       <% @drones.each do |drone| %>
         <%= "-----" if drone.drone_name.blank? %>
-        <%= drone.drone_name %>
+        <span>■<%= drone.drone_name %></span>
       <% end %>
     </div>
     <div class="col"></div>
@@ -77,17 +77,17 @@
   <div class="row">
     <div class="col">
       <% if current_user.id == @user.id %>
-        <%= link_to 'プロフィール設定', edit_profile_path(current_user), class:"btn btn-outline-secondary" %>
+        <%= link_to ' プロフィール設定', edit_profile_path(current_user), class:"btn btn-outline-secondary bi bi-pencil-square" %>
       <% end %>
     </div>
     <div class="col">
-      <%= link_to 'みんなの投稿', blogs_path, class: "btn btn-outline-primary" %>
+      <%= link_to ' みんなの投稿', blogs_path, class: "btn btn-outline-primary bi bi-people-fill" %>
     </div>
     <div class="col">
       <% if current_user.id == @user.id %>
-        <p><%= link_to '自分の投稿一覧', yourself_blog_blogs_path, class: "btn btn-outline-primary" %></p>
+        <p><%= link_to ' 自分の投稿一覧', yourself_blog_blogs_path, class: "btn btn-outline-primary bi bi-person-badge" %></p>
         <br>
-        <p><%= link_to 'お気に入り一覧', favorites_path, class:"btn btn-outline-dark" %></p>
+        <p><%= link_to ' お気に入り一覧', favorites_path, class:"btn btn-outline-dark bi bi-balloon-heart" %></p>
       <% else %>
         <%= link_to "#{@profile.user.name}さんの投稿一覧", other_blog_blog_path(@profile.user), class:"btn btn-outline-primary" %>
       <% end %>
