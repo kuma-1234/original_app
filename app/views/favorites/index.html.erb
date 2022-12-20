@@ -1,19 +1,19 @@
 <h1>お気に入り一覧</h1>
 <% if @favorites.present? %>
-  <% @favorites.each do |favorite| %>
+  <% @favorites.includes([:user, :drones]).each do |favorite| %>
   <div class="all_blog_content">
     <div class="card" style="width: 30rem;">
       <div class="icon_user">
-        <% if favorite.blog.user.icon.present? %>
-          <%= image_tag favorite.blog.user.icon.url, class: 'rounded-circle mr15', width: '60', height: '60' %>
+        <% if favorite.user.icon.present? %>
+          <%= image_tag favorite.user.icon.url, class: 'rounded-circle mr15', width: '60', height: '60' %>
         <% else %>
           <%= image_tag 'guest_user.png', class: 'rounded-circle mr15', width: '60', height: '60' %>
         <% end %>
-        <a><%= favorite.blog.user.name %></a>
+        <a><%= favorite.user.name %></a>
       </div>
 
-      <% if favorite.blog.picture.present? %>
-        <%= image_tag favorite.blog.picture.to_s, class:"card-img-top"  %>
+      <% if favorite.picture.present? %>
+        <%= image_tag favorite.picture.to_s, class:"card-img-top"  %>
       <% else %>
         <%= image_tag 'No image.jpg', class:"card-img-top" %>
       <% end %>
@@ -22,45 +22,45 @@
         <div class="container">
           <div class="row justify-content-start">
             <div class="col-4"><label>作業実施日</label></div>
-            <div class="col-4"><%= favorite.blog.work_date %></div>
+            <div class="col-4"><%= favorite.work_date %></div>
           </div>
           <div class="row justify-content-start">
             <div class="col-4"><label>使用機体</label></div>
             <div class="col-4">
-              <% favorite.blog.drones.each do |drone| %>
+              <% favorite.drones.each do |drone| %>
                 <a>■</a><%= drone.drone_name %>
               <% end %> 
             </div>
           </div>
           <div class="row justify-content-start">
             <div class="col-4"><label>剤型</label></div>
-            <div class="col-4"><%= favorite.blog.pesticide_type %></div>
+            <div class="col-4"><%= favorite.pesticide_type %></div>
           </div>
           <div class="row justify-content-start">
             <div class="col-4"><label>散布農薬名</label></div>
-            <div class="col-4"><%= favorite.blog.pesticide_name %></div>
+            <div class="col-4"><%= favorite.pesticide_name %></div>
           </div>
           <div class="row justify-content-start">
             <div class="col-4"><label>散布作物</label></div>
-            <div class="col-4"><%= favorite.blog.crop %></div>
+            <div class="col-4"><%= favorite.crop %></div>
           </div>
           <div class="row justify-content-start">
             <div class="col-4"><label>品種名</label></div>
-            <div class="col-4"><%= favorite.blog.variety %></div>
+            <div class="col-4"><%= favorite.variety %></div>
           </div>
           <div class="row justify-content-start">
             <div class="col-4"><label>日記帳</label></div>
           </div>
           <div class="row justify-content-start">
-            <div><%= truncate(favorite.blog.content, length: 50) %></div>
+            <div><%= truncate(favorite.content, length: 50) %></div>
           </div><br>
           <div class="row justify-content-start">
             <div class="col-4">
-              <div id="favorite_blog_<%= favorite.blog.id %>">
-                <%= render 'favorites/favorite',  blog: favorite.blog %>
+              <div id="favorite_blog_<%= favorite.id %>">
+                <%= render 'favorites/favorite',  blog: favorite %>
               </div>
             </div>
-            <div class="col"><%= link_to '詳細', blog_path(favorite.blog), class:"btn btn-outline-dark" %></div>
+            <div class="col"><%= link_to '詳細', blog_path(favorite), class:"btn btn-outline-dark" %></div>
           </div>
         </div>
       </div>
