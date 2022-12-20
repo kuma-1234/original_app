@@ -50,7 +50,7 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
     if current_user.id == @blog.user_id
       @blog.destroy
-      redirect_to blogs_path, notice: "ブログを削除しました！"
+      redirect_to blogs_path, notice: 'ブログを削除しました！'
     else
       redirect_to blogs_path, notice: '他のユーザーの日記は削除できません！'
     end
@@ -72,7 +72,7 @@ class BlogsController < ApplicationController
 
   def blog_params
     params.require(:blog).permit(
-      :picture, :content, :work_date, :pesticide_type, :pesticide_name, 
+      :picture, :content, :work_date, :pesticide_type, :pesticide_name,
       :flight_speed, :rpm, :shutter_opening, :crop, :variety, :spray_area, :status, {drone_ids: []}
     )
   end

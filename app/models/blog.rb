@@ -26,7 +26,7 @@ class Blog < ApplicationRecord
     その他野菜類: 'その他野菜類', その他: 'その他'
   }, _prefix: true
 
-  enum status: { public: 0, private: 1}, _prefix: true
+  enum status: { public: 0, private: 1 }, _prefix: true
 
   mount_uploader :picture, ImageUploader
 end

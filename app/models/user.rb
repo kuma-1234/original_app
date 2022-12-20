@@ -3,17 +3,17 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
-          
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
   has_many :blogs, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_blogs, through: :favorites, source: :blog
   has_many :comments, dependent: :destroy
-  mount_uploader :icon, ImageUploader
 
   validates :name, presence: true
   validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+
+  mount_uploader :icon, ImageUploader
 
   def favorited_by?(blog_id)
     favorites.where(blog_id: blog_id).exists?

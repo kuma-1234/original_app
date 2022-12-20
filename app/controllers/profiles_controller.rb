@@ -32,10 +32,12 @@ class ProfilesController < ApplicationController
     @drones = @profile.drones
   end
 
-  private 
+  private
 
   def params_profile
-    params.require(:profile).permit(:prefecture, :drone_name, :main_crop, :self_introduce,
-                                    drones_attributes: [ :id, :drone_name, :_destroy ])
+    params.require(:profile).permit(
+      :prefecture, :drone_name, :main_crop, :self_introduce,
+      drones_attributes: [ :id, :drone_name, :_destroy ]
+    )
   end
 end
