@@ -8,9 +8,11 @@
 - devise
 - Ajaxを使ったコメント機能
 - お気に入り機能
+- AWS EC2
 
 ## カリキュラム外の技術
 - ransack (検索機能)
+- cocoon
 - gem rails_admin, gem cancancanを使った管理者機能
 
 ## 実行手順
