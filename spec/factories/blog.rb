@@ -1,4 +1,4 @@
-FactoryBot.define do 
+FactoryBot.define do
   factory :blog do
     work_date { '2022-6-17' }
     pesticide_type { '粒剤' }

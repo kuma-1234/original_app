@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'コメントモデル機能', type: :model do
-  let!(:user){ FactoryBot.create(:user) }
-  let!(:profile){ FactoryBot.build(:profile, user: user) }
-  let!(:drone){ FactoryBot.create(:drone, profile: profile) }
-  let!(:blog){ FactoryBot.create(:blog,user: user) }
+  let!(:user) { FactoryBot.create(:user) }
+  let!(:profile) { FactoryBot.build(:profile, user: user) }
+  let!(:drone) { FactoryBot.create(:drone, profile: profile) }
+  let!(:blog) { FactoryBot.create(:blog, user: user) }
   describe 'バリデーションのテスト' do
     context 'talkが入力されている場合' do
       it 'コメントが作成される' do

@@ -2,21 +2,12 @@ class BlogsController < ApplicationController
 
   def index
     @q = Blog.status_public.includes(:user, :match_drones, :drones).ransack(params[:q])
-    @blogs = @q.result(distinct: true).order("created_at desc")
+    @blogs = @q.result(distinct: true).order('created_at desc')
     @q = Blog.ransack
   end
 
   def new
     @blog = Blog.new
-  end
-
-  def create
-    @blog = current_user.blogs.build(blog_params)
-    if @blog.save
-      redirect_to blogs_path, notice: '新規作成しました！'
-    else
-      render :new
-    end
   end
 
   def show
@@ -27,6 +18,15 @@ class BlogsController < ApplicationController
 
     if @blog.status_private? && @blog.user != current_user
       redirect_to blogs_path, notice: 'このページにはアクセスできません！'
+    end
+  end
+
+  def create
+    @blog = current_user.blogs.build(blog_params)
+    if @blog.save
+      redirect_to blogs_path, notice: '新規作成しました！'
+    else
+      render :new
     end
   end
 
@@ -58,12 +58,12 @@ class BlogsController < ApplicationController
 
   def yourself_blog
     @search = Blog.where(user_id: current_user.id).includes(:user, :match_drones, :drones).ransack(params[:q])
-    @blogs = @search.result(distinct: true).order("created_at desc")
+    @blogs = @search.result(distinct: true).order('created_at desc')
     @search = Blog.where(user_id: current_user.id).ransack
   end
 
   def other_blog
-    @blogs = Blog.status_public.where(user_id: params[:id]).includes(:user, :match_drones, :drones).order("created_at desc")
+    @blogs = Blog.status_public.where(user_id: params[:id]).includes(:user, :match_drones, :drones).order('created_at desc')
     @blog = @blogs.find_by(user_id: params[:id])
   end
 
@@ -73,7 +73,7 @@ class BlogsController < ApplicationController
   def blog_params
     params.require(:blog).permit(
       :picture, :content, :work_date, :pesticide_type, :pesticide_name,
-      :flight_speed, :rpm, :shutter_opening, :crop, :variety, :spray_area, :status, {drone_ids: []}
+      :flight_speed, :rpm, :shutter_opening, :crop, :variety, :spray_area, :status, { drone_ids: [] }
     )
   end
 end

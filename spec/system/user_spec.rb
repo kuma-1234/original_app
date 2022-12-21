@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'ユーザー管理機能',  type: :system do
+RSpec.feature 'ユーザー管理機能', type: :system do
   describe 'ユーザーの新規登録テスト' do
     context '新規登録ができる場合' do
       it 'ユーザーの新規登録ができて、マイページを表示する' do
@@ -32,7 +32,7 @@ RSpec.feature 'ユーザー管理機能',  type: :system do
       it 'ログインしてマイページへ移動する' do
         visit new_user_session_path
         fill_in 'user[email]', with: 'guest@test.com'
-        fill_in 'user[password]', with:  'guest123456'
+        fill_in 'user[password]', with: 'guest123456'
         click_button 'ログイン'
         expect(current_path).to eq profile_path(@user.id)
       end
@@ -63,7 +63,7 @@ RSpec.feature 'ユーザー管理機能',  type: :system do
   end
 
   describe '管理画面のテスト' do
-    before do 
+    before do
       @user = FactoryBot.create(:user)
       @admin_user = FactoryBot.create(:admin_user)
       @profile = FactoryBot.create(:profile, user: @user)

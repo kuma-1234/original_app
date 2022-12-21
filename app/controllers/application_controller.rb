@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   # ログイン済ユーザーのみにアクセスを許可する.
   before_action :authenticate_user!
 
-  # deviseコントローラーにストロングパラメータを追加する      
+  # deviseコントローラーにストロングパラメータを追加する
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   #ログイン後のリンクページ
@@ -19,12 +19,12 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-  
+
   def configure_permitted_parameters
     # サインアップ時にname,iconのストロングパラメータを追加
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :icon])
     # profileのストロングパラメータを追加
-    devise_parameter_sanitizer.permit(:sign_up, keys: [profile_attributes:[:prefecture]])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [profile_attributes: [:prefecture]])
     # アカウント編集の時にnameのストロングパラメータを追加
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :icon])
   end
