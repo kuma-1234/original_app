@@ -15,10 +15,14 @@
  */
 
 body{
-  min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
+  min-height: 100vh;
   position: relative;/* ←相対位置 */
   padding-bottom: 60px; /* ←フッターの高さを指定 */
   box-sizing: border-box;
+}
+
+li {
+  list-style: none;
 }
 
 .container-fluid a{
@@ -61,7 +65,6 @@ footer{
   font-family: 'キウイ丸', serif;
 }
 
-
 // sign_up.sign_in
 h2{
   text-align: center;
@@ -102,7 +105,7 @@ h2{
 }
 
 #error_explanation li{
-list-style:none;
+  list-style:none;
 }
 
 // nav_ber

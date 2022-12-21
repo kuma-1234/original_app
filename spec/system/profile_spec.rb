@@ -1,20 +1,20 @@
 require 'rails_helper'
 
-RSpec.feature 'プロフィール管理機能',  type: :system do
-  let!(:user){ FactoryBot.create(:user) }
-  let!(:profile){ FactoryBot.build(:profile, user: user) }
-  let!(:drone){ FactoryBot.create(:drone, profile: profile) }
-  let!(:user2){ FactoryBot.create(:user2) }
-  let!(:profile2){ FactoryBot.build(:profile2, user: user2) }
-  let!(:drone2){ FactoryBot.create(:drone2, profile: profile2) }
-  let!(:admin_user){ FactoryBot.create(:admin_user) }
-  let!(:profile3){ FactoryBot.build(:profile3, user: admin_user) }
-  let!(:drone3){ FactoryBot.create(:drone3, profile: profile3) }
+RSpec.feature 'プロフィール管理機能', type: :system do
+  let!(:user) { FactoryBot.create(:user) }
+  let!(:profile) { FactoryBot.build(:profile, user: user) }
+  let!(:drone) { FactoryBot.create(:drone, profile: profile) }
+  let!(:user2) { FactoryBot.create(:user2) }
+  let!(:profile2) { FactoryBot.build(:profile2, user: user2) }
+  let!(:drone2) { FactoryBot.create(:drone2, profile: profile2) }
+  let!(:admin_user) { FactoryBot.create(:admin_user) }
+  let!(:profile3) { FactoryBot.build(:profile3, user: admin_user) }
+  let!(:drone3) { FactoryBot.create(:drone3, profile: profile3) }
 
   def login_1
     visit new_user_session_path
     fill_in 'user[email]', with: 'guest@test.com'
-    fill_in 'user[password]', with:'guest123456'
+    fill_in 'user[password]', with: 'guest123456'
     click_button 'ログイン'
   end
 

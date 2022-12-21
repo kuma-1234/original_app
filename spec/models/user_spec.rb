@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 RSpec.describe 'ユーザー管理機能', type: :model do
   describe 'バリデーションのテスト' do
     context '名前、メールアドレス、パスワードの情報が正しく入力されている場合' do

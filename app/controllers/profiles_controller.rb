@@ -2,8 +2,14 @@ class ProfilesController < ApplicationController
 
   def index
     @profile_q = Profile.includes(:user, :drones).ransack(params[:q])
-    @profiles = @profile_q.result(distinct: true).order("created_at desc")
+    @profiles = @profile_q.result(distinct: true).order('created_at desc')
     @profile_q = Profile.ransack
+  end
+
+  def show
+    @user = User.find(params[:id])
+    @profile = @user.profile
+    @drones = @profile.drones
   end
 
   def edit
@@ -26,16 +32,12 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def show
-    @user = User.find(params[:id])
-    @profile = @user.profile
-    @drones = @profile.drones
-  end
-
-  private 
+  private
 
   def params_profile
-    params.require(:profile).permit(:prefecture, :drone_name, :main_crop, :self_introduce,
-                                    drones_attributes: [ :id, :drone_name, :_destroy ])
+    params.require(:profile).permit(
+      :prefecture, :drone_name, :main_crop, :self_introduce,
+      drones_attributes: [:id, :drone_name, :_destroy]
+    )
   end
 end

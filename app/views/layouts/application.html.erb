@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Drysh</title>
+    <%= favicon_link_tag('favicon.ico') %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -33,15 +34,15 @@
             <div class="navbar-nav">
               <% if user_signed_in? %>
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link" %>
-                <%= link_to 'みんなの投稿', blogs_path, class:"nav-link" %>
-                <%= link_to '新規投稿', new_blog_path, class:"nav-link" %>
-                <%= link_to '登録ユーザーの一覧', profiles_path, class:"nav-link" %>
-                <%= link_to 'マイページ', profile_path(current_user.id), class:"nav-link" %>
+                <%= link_to ' みんなの投稿', blogs_path, class:"nav-link bi bi-people-fill" %>
+                <%= link_to ' 新規投稿', new_blog_path, class:"nav-link bi bi-plus-square" %>
+                <%= link_to ' 登録ユーザーの一覧', profiles_path, class:"nav-link bi bi-people" %>
+                <%= link_to ' マイページ', profile_path(current_user.id), class:"nav-link bi bi-person-circle" %>
                 <% if current_user.admin? %>
                   <%= link_to '管理者画面へ', rails_admin_path, class:"nav-link" %>
                 <% end %>
               <% else %>
-                <%= link_to "新規登録", new_user_registration_path, class:"nav-link" %>
+                <%= link_to " 新規登録", new_user_registration_path, class:"nav-link bi bi-person-plus-fill" %>
                 <%= link_to "ログイン", new_user_session_path, class:"nav-link" %>
                 <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:"nav-link" %>
                 <%= link_to '管理者ログイン（閲覧用）', users_guest_admin_sign_in_path, method: :post, class:"nav-link"%>
@@ -68,13 +69,11 @@
     </main>
 
     <footer>
-      <p>Coryright © Drysh ~ Drone Diary Sharing ~  2022</p>
+      <p> ©Drysh 2022 / Created by Kanami Kumaki</p>
     </footer>
 
     <%# bootstrap %>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <%# <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script> %>
-    <%# <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> %>
     <%# AOS %>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>AOS.init();</script>

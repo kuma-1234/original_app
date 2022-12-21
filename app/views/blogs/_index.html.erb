@@ -1,6 +1,6 @@
 <% @blogs.each do |blog| %>
   <div class="all_blog_content">
-    <div class="card" style="width: 30rem;">
+    <div class="card" style="width: 25rem;">
       <div class="icon_user">
         <% if blog.user.icon.present? %>
           <%= link_to image_tag(blog.user.icon.url, class: 'rounded-circle mr15', width: '60', height: '60'), profile_path(blog.user_id) %>
@@ -68,15 +68,15 @@
               <%= render 'favorites/favorite',  blog: blog %>
             </div>
           </div>
-          <div class="col"><%= link_to '詳細', blog_path(blog), class:"btn btn-outline-dark",  data: {"turbolinks" => false} %></div>
+          <div class="col"><%= link_to '', blog_path(blog), class:"btn btn-outline-dark bi bi-layout-text-sidebar-reverse",  data: {"turbolinks" => false} %></div>
           <div class="col">
             <% if current_user.id == blog.user_id %>
-              <%= link_to '編集', edit_blog_path(blog), class:"btn btn-outline-dark" %>
+              <%= link_to '', edit_blog_path(blog), class:"btn btn-outline-dark bi bi-pencil-square" %>
             <% end %>
           </div>
           <div class="col">
             <% if current_user.id == blog.user_id %>
-              <%= link_to '削除', blog_path(blog), method: :delete, data:{confirm:'本当に削除しても良いですか？'}, class:"btn btn-outline-danger" %>
+              <%= link_to '', blog_path(blog), method: :delete, data:{confirm:'本当に削除しても良いですか？'}, class:"btn btn-outline-danger bi bi-trash" %>
             <% end %>
           </div>
         </div>

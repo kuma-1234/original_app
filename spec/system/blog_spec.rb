@@ -1,22 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe 'ブログ管理機能', type: :system do
-  let!(:user){ FactoryBot.create(:user) }
-  let!(:profile){ FactoryBot.build(:profile, user: user) }
-  let!(:drone){ FactoryBot.create(:drone, profile: profile) }
-  let!(:blog){ FactoryBot.create(:blog,user: user) }
-  let!(:blog2){ FactoryBot.create(:blog2,user: user) }
-  let!(:blog3){ FactoryBot.create(:blog3,user: user) }
-  let!(:user2){ FactoryBot.create(:user2) }
-  let!(:profile2){ FactoryBot.build(:profile2, user: user2) }
-  let!(:drone2){ FactoryBot.create(:drone2, profile: profile2) }
-  let!(:blog4){ FactoryBot.create(:blog4,user: user2) }
-  let!(:blog5){ FactoryBot.create(:blog5,user: user2) }
+  let!(:user) { FactoryBot.create(:user) }
+  let!(:profile) { FactoryBot.build(:profile, user: user) }
+  let!(:drone) { FactoryBot.create(:drone, profile: profile) }
+  let!(:blog) { FactoryBot.create(:blog, user: user) }
+  let!(:blog2) { FactoryBot.create(:blog2, user: user) }
+  let!(:blog3) { FactoryBot.create(:blog3, user: user) }
+  let!(:user2) { FactoryBot.create(:user2) }
+  let!(:profile2) { FactoryBot.build(:profile2, user: user2) }
+  let!(:drone2) { FactoryBot.create(:drone2, profile: profile2) }
+  let!(:blog4) { FactoryBot.create(:blog4, user: user2) }
+  let!(:blog5) { FactoryBot.create(:blog5, user: user2) }
 
   def login
     visit new_user_session_path
     fill_in 'user[email]', with: 'guest@test.com'
-    fill_in 'user[password]', with:'guest123456'
+    fill_in 'user[password]', with: 'guest123456'
     click_button 'ログイン'
   end
 
@@ -25,8 +25,8 @@ RSpec.describe 'ブログ管理機能', type: :system do
       it '新規投稿した日記が一覧画面に表示される' do
         login
         visit new_blog_path
-        select '液剤（肥料）', from:'blog[pesticide_type]'
-        select '大豆', from:'blog[crop]'
+        select '液剤（肥料）', from: 'blog[pesticide_type]'
+        select '大豆', from: 'blog[crop]'
         fill_in 'blog[spray_area]', with: '2'
         fill_in 'blog[content]', with: 'こちらはテストです'
         click_on '作成'
@@ -35,8 +35,8 @@ RSpec.describe 'ブログ管理機能', type: :system do
       it '新規投稿した日記が一覧画面に表示されない（非公開選択時）' do
         login
         visit new_blog_path
-        select 'その他', from:'blog[pesticide_type]'
-        select '稲', from:'blog[crop]'
+        select 'その他', from: 'blog[pesticide_type]'
+        select '稲', from: 'blog[crop]'
         fill_in 'blog[spray_area]', with: '2'
         fill_in 'blog[content]', with: 'これはテストです'
         choose '非公開(自分にのみ表示されます)'
@@ -111,7 +111,7 @@ RSpec.describe 'ブログ管理機能', type: :system do
         login
         visit blogs_path
         click_on '削除', match: :first
-        expect(page.accept_confirm).to eq "本当に削除しても良いですか？"
+        expect(page.accept_confirm).to eq '本当に削除しても良いですか？'
         expect(page).to have_content 'ブログを削除しました！'
         expect(page).not_to have_content 'アイウエオ'
       end
@@ -147,7 +147,7 @@ RSpec.describe 'ブログ管理機能', type: :system do
       end
     end
     context '作物で検索をした場合' do
-      it "作物に完全一致したタスクが絞り込まれる" do
+      it '作物に完全一致したタスクが絞り込まれる' do
         select '稲', from: 'q[crop_eq]'
         click_on '検索'
         expect(page).to have_content 'アイウエオ'

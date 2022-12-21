@@ -1,5 +1,5 @@
 <ul style="list-style:none">
-  <% blog.comments.each do |comment| %>
+  <% blog.comments.includes([:user]).each do |comment| %>
     <% if comment.id.present? %>
       <li>
         <div class="comment_content">

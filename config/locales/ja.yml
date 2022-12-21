@@ -2,7 +2,7 @@
 ja:
   activerecord:
     models:
-      user: ユーザ-
+      user: ユーザー
       profile: "プロフィール"
       blog: "日記"
       drone: "所有ドローン"
