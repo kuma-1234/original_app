@@ -2,7 +2,6 @@
   <h1>登録ユーザーの一覧</h1>
 </div>
 <%= render 'search_user' %>
-
 <% @profiles.each do |profile| %>
   <div class="container_profile">
     <div class="row">
@@ -17,7 +16,6 @@
       <div class="col"></div>
       <div class="col"></div>
     </div>
-
     <div class="row">
       <div class="col">
         <label>住居地</label>
@@ -28,22 +26,19 @@
       </div>
       <div class="col"></div>
     </div>
-
-  <br>
+    <br>
     <div class="row">
       <div class="col">
         <label>所有ドローン</label>
       </div>
       <div class="col">
         <% profile.drones.each do |drone| %>
-          <%= drone.drone_name %>
+          <span>■<%= drone.drone_name %></span>
         <% end %>
       </div>
       <div class="col"></div>
     </div>
-
-  <br>
-    
+    <br>
     <div class="row">
       <div class="col">
         <label>主な生産作物</label>
@@ -54,7 +49,6 @@
       </div>
       <div class="col"></div>
     </div>
-
     <br>
     <div class="row">
       <div class="col">

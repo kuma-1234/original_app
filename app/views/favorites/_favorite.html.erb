@@ -3,7 +3,6 @@
     <i class="fa-solid fa-heart"></i>いいね済
   <% end %>
   <%= blog.favorites.count %></td>
-
 <% else %>
   <%= link_to blog_favorites_path(blog), class: "like-link",method: :post, remote: true do %>
     <i class="fa-regular fa-heart"></i>いいね

@@ -1,4 +1,3 @@
-<!-- この記述がblogのshow画面に表示されるコメント入力欄になります -->
 <%= form_with(model: [blog, comment], local: false) do |form| %>
   <% if comment.errors.any? %>
     <div id="error_explanation">
@@ -10,12 +9,10 @@
       </ul>
     </div>
   <% end %>
-
   <div class="comment_field">
     <%= form.label :talk, class:"form-label" %>
     <%= form.text_area :talk, placeholder: "※誹謗中傷を含むコメントは禁止です※", class:"form-control"  %>
   </div>
-
   <div class="comment_actions">
     <%= form.submit "コメント投稿", class:"btn btn-outline-dark w-100" %>
   </div>
