@@ -11,7 +11,7 @@ RSpec.feature 'プロフィール管理機能', type: :system do
   let!(:profile3) { FactoryBot.build(:profile3, user: admin_user) }
   let!(:drone3) { FactoryBot.create(:drone3, profile: profile3) }
 
-  def login_1
+  def login
     visit new_user_session_path
     fill_in 'user[email]', with: 'guest@test.com'
     fill_in 'user[password]', with: 'guest123456'
@@ -20,7 +20,7 @@ RSpec.feature 'プロフィール管理機能', type: :system do
 
   describe 'プロフィールの編集テスト' do
     before do
-      login_1
+      login
     end
     context 'プロフィールを編集した場合' do
       it 'マイページに更新されたものが反映される' do
@@ -47,7 +47,7 @@ RSpec.feature 'プロフィール管理機能', type: :system do
   end
   describe '登録ユーザーの一覧画面機能' do
     before do
-      login_1
+      login
     end
     context '登録ユーザー一覧画面に移動した場合' do
       it '登録しているユーザー全てが確認できる' do
@@ -59,7 +59,7 @@ RSpec.feature 'プロフィール管理機能', type: :system do
   end
   describe '登録ユーザーの一覧画面検索機能' do
     before do
-      login_1
+      login
     end
     context '機体名で検索した場合' do
       it 'その機体を所有しているユーザーのみ表示される' do
