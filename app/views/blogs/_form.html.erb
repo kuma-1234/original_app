@@ -72,16 +72,16 @@
     </div>
     <br>
     <p>
-    <%= f.label(:public, for: nil, class: 'blog_status_label') do %>
-      <%= f.radio_button :status, :public %>
-      <%= '公開(全てのユーザーに公開されます)' %>
-    <% end %>
+      <%= f.label(:public, for: nil, class: 'blog_status_label') do %>
+        <%= f.radio_button :status, :public %>
+        <%= '公開(全てのユーザーに公開されます)' %>
+      <% end %>
     </p>
     <p>
-    <%= f.label(:private, for: nil, class: 'blog_status_label') do %>
-      <%= f.radio_button :status, :private %>
-      <%= '非公開(自分にのみ表示されます)' %>
-    <% end %>
+      <%= f.label(:private, for: nil, class: 'blog_status_label') do %>
+        <%= f.radio_button :status, :private %>
+        <%= '非公開(自分にのみ表示されます)' %>
+      <% end %>
     </p>
     <%= f.submit "作成", class:"btn btn-outline-dark w-100" %>
   </div>

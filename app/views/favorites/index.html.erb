@@ -11,13 +11,11 @@
         <% end %>
         <a><%= favorite.user.name %></a>
       </div>
-
       <% if favorite.picture.present? %>
         <%= image_tag favorite.picture.to_s, class:"card-img-top"  %>
       <% else %>
         <%= image_tag 'No image.jpg', class:"card-img-top" %>
       <% end %>
-      
       <div class="card-body">
         <div class="container">
           <div class="row justify-content-start">

@@ -142,17 +142,10 @@
     </div>
 
     <h5>コメント投稿</h5>
-
-    <!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
     <div id="comments_area">
-      <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
       <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
     </div>
-
-    <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
     <%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>
-
-    
     <div class="row">
       <div class="col"><%= link_to ' みんなの投稿', blogs_path, class:"btn btn-outline-primary w-100 bi bi-people-fill" %></div>
       <div class="col"><%= link_to ' お気に入り一覧', favorites_path, class:"btn btn-outline-dark w-100 bi bi-balloon-heart" %></div>
