@@ -2,6 +2,11 @@ class Profile < ApplicationRecord
   belongs_to :user
   has_many :drones, dependent: :destroy, inverse_of: :profile
   accepts_nested_attributes_for :drones, reject_if: :all_blank, allow_destroy: true
+  has_many :active_relationships, foreign_key: 'follower_id', class_name: 'Relationship', dependent: :destroy
+  has_many :passive_relationships, foreign_key: 'followed_id', class_name: 'Relationship', dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
+
 
   enum prefecture: {
     選択しない: '0',
@@ -15,4 +20,16 @@ class Profile < ApplicationRecord
     福岡県: '40', 佐賀県: '41', 長崎県: '42', 熊本県: '43', 大分県: '44', 宮崎県: '45', 鹿児島県: '46',
     沖縄県: '47'
   }
+
+  def follow!(other_profile)
+    active_relationships.create!(followed_id: other_profile.id)
+  end
+
+  def following?(other_profile)
+    active_relationships.find_by(followed_id: other_profile.id)
+  end
+
+  def unfollow!(other_profile)
+    active_relationships.find_by(followed_id: other_profile.id).destroy
+  end
 end

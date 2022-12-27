@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'relationships/create'
+  get 'relationships/destroy'
   root 'homes#show'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
@@ -24,6 +26,7 @@ Rails.application.routes.draw do
     end
   end
   resources :favorites, only:[:index]
+  resources :relationships, only: [:create, :destroy]
   #letter_opener
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
