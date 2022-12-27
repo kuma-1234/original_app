@@ -65,7 +65,7 @@ h1{
 }
 
 .container_myprofile{
-  margin: 2rem;
+  margin-left: 2rem;
 }
 
 .container_myprofile label{
@@ -76,6 +76,10 @@ h1{
 
 .bottun_list{
   margin: 2rem;
+}
+
+.follower a{
+  font-size: 0.95rem;
 }
 
 // edit画面
@@ -106,3 +110,7 @@ h1{
   margin: 2rem;
 }
 
+// follower
+.container_follower{
+  margin-left: 2rem;
+}

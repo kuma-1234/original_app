@@ -12,7 +12,11 @@ Rails.application.routes.draw do
     post 'users/guest_admin_sign_in', to: 'users/sessions#guest_admin_sign_in'
   end
 
-  resources :profiles, only: [:edit, :update, :show, :index]
+  resources :profiles, only: [:edit, :update, :show, :index] do
+    member do
+      get :followings, :followers
+    end
+  end
   resources :blogs do
     resources :comments
     resource :favorites, only:[:create, :destroy]
@@ -24,6 +28,7 @@ Rails.application.routes.draw do
     end
   end
   resources :favorites, only:[:index]
+  resources :relationships, only: [:create, :destroy]
   #letter_opener
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

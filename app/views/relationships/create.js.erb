@@ -1,0 +1,1 @@
+$("#follow_form_"+"<%= @profile.id %>").html("<%= escape_javascript(render partial: 'profiles/follow_form', locals: { profile: @profile } ) %>")
