@@ -20,6 +20,11 @@
   <div class="follower">
     <span><%= link_to "フォロー #{@profile.followings.count}人", followings_profile_path(@user) %></span>
     <span><%= link_to "フォロワー #{@profile.followers.count}人", followers_profile_path(@user) %></span>
+    <span>
+      <% if current_user.id != @user.id %>
+        <%= render 'follow_form', profile: @profile %>
+      <% end %>
+    </span>
   </div>
 </div>
 <div class="container_myprofile">

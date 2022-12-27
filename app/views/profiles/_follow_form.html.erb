@@ -2,11 +2,11 @@
   <% unless current_user.profile.following?(profile) %>
     <%= form_with(model: current_user.profile.active_relationships.build(followed_id: profile.id), local: false) do |f| %>
       <%= f.hidden_field :followed_id %>
-      <%= f.submit "フォロー", class: 'mt-4 btn btn-outline-secondary' %>
+      <%= f.submit "フォロー", class: 'mt-3 btn btn-outline-secondary' %>
     <% end %>
   <% else %>
     <%= form_with(model: current_user.profile.active_relationships.find_by(followed_id: profile.id), method: :delete, local: false) do |f| %>
-      <%= f.submit "フォロー解除", class: 'mt-4 btn btn-secondary' %>
+      <%= f.submit "フォロー解除", class: 'mt-3 btn btn-secondary' %>
     <% end %>
   <% end %>
 </div>
