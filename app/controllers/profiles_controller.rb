@@ -32,6 +32,16 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def followers
+    @profile = Profile.find(params[:id])
+    @profiles = @profile.followers
+  end
+
+  def followings
+    @profile = Profile.find(params[:id])
+    @profiles = @profile.followings
+  end
+
   private
 
   def params_profile

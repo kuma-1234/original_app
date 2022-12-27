@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'relationships/create'
-  get 'relationships/destroy'
   root 'homes#show'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
@@ -14,7 +12,11 @@ Rails.application.routes.draw do
     post 'users/guest_admin_sign_in', to: 'users/sessions#guest_admin_sign_in'
   end
 
-  resources :profiles, only: [:edit, :update, :show, :index]
+  resources :profiles, only: [:edit, :update, :show, :index] do
+    member do
+      get :followings, :followers
+    end
+  end
   resources :blogs do
     resources :comments
     resource :favorites, only:[:create, :destroy]
