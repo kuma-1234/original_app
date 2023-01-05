@@ -1,7 +1,4 @@
-<% if @over_ten %>
-  <%= link_to '以前のメッセージ', '?m=all' %>
-<% end %>
-
+<h1><%= @conversation.recipient.name %>さんとのDM</h1>
 <div class="ui segment">
   <% @messages.includes([:user]).each do |message| %>
     <% if message.body.present? %>
@@ -15,14 +12,16 @@
                 <%= link_to image_tag('guest_user.png', size: '30x30'), profile_path(message.user_id) %>
               <% end %>
               <%= message.user.name %>
-            </strong> <%= message.message_time %>
+            </strong> <a id="send_time"><%= message.message_time %></a>
           </div>
-          <div class="list">
+          <div class="list m-2">
             <div class="item">
               <i class="right triangle icon"></i>
-              <%= message.body %> 【
+              <%= message.body %> 
               <% if message.user == current_user %>
-                <%= message.read ? '既読' : '未読' %> 】
+                <div class="read_or_notread">
+                  <%= message.read ? '既読' : '未読' %>
+                </div>
               <% end %>
             </div>
           </div>
@@ -33,11 +32,15 @@
 </div>
 
 <%= form_with(model: [@conversation, @message]) do |f| %>
-  <div class="field">
+  <div class="message_field">
     <%= f.text_area :body, class: "form-control" %>
   </div>
     <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-  <div>
-    <%= f.submit "メッセージを送る" %>
+  <div class="message_field send_button">
+    <%= f.submit "メッセージを送る", class:"btn btn-outline-dark" %>
   </div>
+  <div class="message_link mb-3">
+    <%= link_to ' 登録ユーザーの一覧', profiles_path, class:"btn btn-outline-dark bi bi-people", style: "margin-right: 0.5rem" %>
+    <%= link_to 'DM一覧へ戻る', conversations_path, class:"btn btn-outline-dark" %>
+  </div>  
 <% end %>
