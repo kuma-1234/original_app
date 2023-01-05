@@ -1,0 +1,11 @@
+<h1>メッセージ一覧</h1>
+<div>
+  <% @conversations.includes([:messages]).each do |conversation| %>
+    <p>
+      <% if conversation.target_user(current_user).present? %>
+        <%= link_to conversation.target_user(current_user).name, conversation_messages_path(conversation)%>
+        <%= conversation.messages.length %>
+      <% end %>
+    </p>
+  <% end %>
+</div>

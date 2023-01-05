@@ -1,0 +1,43 @@
+<% if @over_ten %>
+  <%= link_to '以前のメッセージ', '?m=all' %>
+<% end %>
+
+<div class="ui segment">
+  <% @messages.includes([:user]).each do |message| %>
+    <% if message.body.present? %>
+      <div class="item">
+        <div class="content">
+          <div class="header">
+            <strong>
+              <% if message.user.icon.present? %>
+                <%= link_to image_tag(message.user.icon.url, class: 'rounded-circle mr15', width: '30', height: '30'), profile_path(message.user_id) %>
+              <% else %>
+                <%= link_to image_tag('guest_user.png', size: '30x30'), profile_path(message.user_id) %>
+              <% end %>
+              <%= message.user.name %>
+            </strong> <%= message.message_time %>
+          </div>
+          <div class="list">
+            <div class="item">
+              <i class="right triangle icon"></i>
+              <%= message.body %> 【
+              <% if message.user == current_user %>
+                <%= message.read ? '既読' : '未読' %> 】
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<%= form_with(model: [@conversation, @message]) do |f| %>
+  <div class="field">
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+  <div>
+    <%= f.submit "メッセージを送る" %>
+  </div>
+<% end %>
