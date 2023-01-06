@@ -39,8 +39,8 @@
   <div class="message_field send_button">
     <%= f.submit "メッセージを送る", class:"btn btn-outline-dark" %>
   </div>
-  <div class="message_link mb-3">
-    <%= link_to ' 登録ユーザーの一覧', profiles_path, class:"btn btn-outline-dark bi bi-people", style: "margin-right: 0.5rem" %>
-    <%= link_to 'DM一覧へ戻る', conversations_path, class:"btn btn-outline-dark" %>
+  <div class="message_link mb-3 row">
+    <div class="col"><%= link_to ' 登録ユーザーの一覧', profiles_path, class:"btn btn-outline-dark bi bi-people w-100"%></div>
+    <div class="col"><%= link_to 'DM一覧へ戻る', conversations_path, class:"btn btn-outline-dark w-100" %></div>
   </div>  
 <% end %>
