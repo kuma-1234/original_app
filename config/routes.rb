@@ -27,6 +27,9 @@ Rails.application.routes.draw do
       get :other_blog
     end
   end
+  resources :conversations do
+    resources :messages
+  end
   resources :favorites, only:[:index]
   resources :relationships, only: [:create, :destroy]
   #letter_opener

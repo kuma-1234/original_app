@@ -17,15 +17,6 @@
       <%= link_to ' アカウント設定', edit_user_registration_path(current_user), class:"btn btn-outline-secondary bi bi-pencil-square" %>
     <% end %>
   </a>
-  <div class="follower">
-    <span><%= link_to "フォロー #{@profile.followings.count}人", followings_profile_path(@user) %></span>
-    <span><%= link_to "フォロワー #{@profile.followers.count}人", followers_profile_path(@user) %></span>
-    <span>
-      <% if current_user.id != @user.id %>
-        <%= render 'follow_form', profile: @profile %>
-      <% end %>
-    </span>
-  </div>
 </div>
 <div class="container_myprofile">
   <div class="row">
@@ -82,19 +73,23 @@
   <div class="row">
     <div class="col">
       <% if current_user.id == @user.id %>
-        <%= link_to ' プロフィール設定', edit_profile_path(current_user), class:"btn btn-outline-secondary bi bi-pencil-square" %>
+        <%= link_to ' プロフィール設定', edit_profile_path(current_user), class:"btn btn-outline-secondary bi bi-pencil-square w-100" %>
       <% end %>
     </div>
     <div class="col">
-      <%= link_to ' みんなの投稿', blogs_path, class: "btn btn-outline-primary bi bi-people-fill" %>
+      <p><%= link_to ' みんなの投稿', blogs_path, class: "btn btn-outline-primary bi bi-people-fill w-100" %></p>
+      <br>
+      <% if current_user.id == @user.id %>
+        <p><%= link_to ' DM一覧', conversations_path, class: "btn btn-outline-dark bi bi-envelope-open w-100"%>
+      <% end %>
     </div>
     <div class="col">
       <% if current_user.id == @user.id %>
-        <p><%= link_to ' 自分の投稿一覧', yourself_blog_blogs_path, class: "btn btn-outline-primary bi bi-person-badge" %></p>
+        <p><%= link_to ' 自分の投稿一覧', yourself_blog_blogs_path, class: "btn btn-outline-primary bi bi-person-badge w-100" %></p>
         <br>
-        <p><%= link_to ' お気に入り一覧', favorites_path, class:"btn btn-outline-dark bi bi-balloon-heart" %></p>
+        <p><%= link_to ' お気に入り一覧', favorites_path, class:"btn btn-outline-dark bi bi-balloon-heart w-100" %></p>
       <% else %>
-        <%= link_to "#{@profile.user.name}さんの投稿一覧", other_blog_blog_path(@profile.user), class:"btn btn-outline-primary" %>
+        <%= link_to "#{@profile.user.name}さんの投稿一覧", other_blog_blog_path(@profile.user), class:"btn btn-outline-primary w-100" %>
       <% end %>
     </div>
   </div>

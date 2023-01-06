@@ -1,0 +1,31 @@
+// Place all the styles related to the Messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.ui .content{
+  margin-left: 2rem;
+}
+
+.message_field{
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.send_button{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.message_link{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.read_or_notread{
+  font-size: 0.5rem;
+  color: rgb(98, 97, 97);
+}
+
+#send_time{
+  font-size: 0.8rem;
+}

@@ -1,0 +1,22 @@
+<h1>メッセージ一覧</h1>
+<div class="explanation">
+  <p id="explanation_item">今メッセージをやりとりしているユーザーの一覧です。</p>
+  <p id="explanation_item">メッセージをしたいユーザー名を押すことでメッセージのやりとり画面に移行します。</p>
+</div>
+<div class="conversation_content">
+  <% @conversations.each do |conversation| %>
+    <p>
+      <% if conversation.target_user(current_user).present? %>
+        <a>
+          <i class="bi bi-envelope-open"></i>
+          <%= link_to conversation.target_user(current_user).name, conversation_messages_path(conversation), class:"dm_partner"%>
+          さんとのDM
+        </a>
+      <% end %>
+    </p>
+  <% end %>
+  <div class="conversation_link row">
+    <div class="col"><%= link_to ' 登録ユーザーの一覧', profiles_path, class:"bi bi-people btn btn-outline-dark w-100" %></div>
+    <div class="col"><%= link_to ' マイページ', profile_path(current_user.id), class:"bi bi-person-circle btn btn-outline-dark w-100" %></div>
+  </div>
+</div>
